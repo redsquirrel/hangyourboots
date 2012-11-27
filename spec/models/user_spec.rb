@@ -13,7 +13,8 @@ describe User do
       end
     end
 
-    describe '#validates_presence_of' do      it { should validate_presence_of :email }
+    describe '#validates_presence_of' do
+      it { should validate_presence_of :email }
       it { should validate_presence_of :gender }
     end
 
