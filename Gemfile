@@ -8,6 +8,8 @@ gem 'rails', '3.2.9'
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
 end
 
 group :production do
