@@ -1,5 +1,9 @@
 Hangyourboots::Application.routes.draw do
 
+  root :to => "houses#index"
+
+  match "/auth/:provider/callback" => "sessions#create"
+
   resources :users
   resources :houses
 
