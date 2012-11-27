@@ -1,5 +1,11 @@
 class HousesController < ApplicationController
-  respond_to :html
+
+	respond_to :html
+	before_filter :get_house, :only => [:update,:destroy,:edit,:show]
+
+	def get_house
+		@house = House.find(params[:id])
+	end
 
   def index
     @houses = House.all
@@ -10,23 +16,26 @@ class HousesController < ApplicationController
     respond_with(@house)
   end
 
-  def new
-  end
+	def new
+		@house = House.new
+	end
 
-  def edit
-  end
+	def edit
 
-  def show
-    @house = House.find(params[:id])
-  end
+	end
 
-  def update
-    @house = House.find(params[:id])
-    @house.update_attributes(params[:house])
-    respond_with(@house)
-  end
+	def show
 
-  def destroy
-  end
+	end
+
+	def update
+		@house.update_attributes(params[:house])
+		respond_with(@house)
+	end
+
+	def destroy
+		@house.destroy
+		redirect_to 'index'
+	end
 
 end
