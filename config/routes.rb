@@ -3,6 +3,7 @@ Hangyourboots::Application.routes.draw do
   root :to => "houses#index"
 
   match "/auth/:provider/callback" => "sessions#create"
+  match "/signout" => "sessions#destroy", :as => :signout
 
   resources :users
   resources :houses

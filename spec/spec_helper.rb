@@ -51,3 +51,12 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
 end
+
+OmniAuth.config.test_mode = true
+OmniAuth.config.add_mock(:twitter, {  :provider    => "twitter",
+                                      :uid         => "1234",
+                                      :user_info   => {   :name       => "Bob hope",
+                                                          :nickname   => "bobby",
+                                                          :urls       => {:Twitter => "www.twitter.com/bobster"}},
+                                      :credentials => {  :token => "lk2j3lkjasldkjflk3ljsdf"} })
+
