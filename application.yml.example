@@ -1,0 +1,4 @@
+SECRET_TOKEN: "xxx"
+PUSHER_APP_ID: 'xxxx'
+PUSHER_KEY: 'xxxx'
+PUSHER_SECRET: 'xxxx'
