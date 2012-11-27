@@ -10,18 +10,15 @@ describe UsersController do
       get :new
       assigns(:user).should be_a_new(User)
     end
-<<<<<<< HEAD
+
     it 'renders the :new template' do
       get :new
       response.should render_template :new
     end
-=======
->>>>>>> specs for user model, created user model validations, started user_controller.rb with specs
   end
 
   describe 'POST #create' do
     it 'saves the new user in the database' do
-<<<<<<< HEAD
       expect {
         post :create, user: attributes_for(:user)
       }.to change(User, :count).by(1)
@@ -68,12 +65,10 @@ describe UsersController do
       user = create(:user)
       get :show, id: user
       assigns(:user).should eq user
-    end
-=======
+
       expect{
         post :create, user: attributes_for(:user)
       }.to change(User, :count).by(1)
     end
->>>>>>> specs for user model, created user model validations, started user_controller.rb with specs
   end
 end
