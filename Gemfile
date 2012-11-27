@@ -15,6 +15,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'minitest'
 end
+gem 'pry-rails', :group => :development
 
 group :test do
 
