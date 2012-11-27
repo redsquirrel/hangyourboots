@@ -1,16 +1,14 @@
 class UsersController < ApplicationController
 
+  respond_to :html
+
   def new
     @user = User.new
   end
 
   def create
-    @user = User.new(params[:user])
-    if @user.save
-      redirect_to @user
-    else
-      render :new
-    end
+    @user = User.create(params[:user])
+    respond_with(@user)
   end
 
   def edit
@@ -19,17 +17,14 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(params[:user])
-      redirect_to @user
-    else
-      render :edit
-    end
+    @user.update_attributes(params[:user])
+    respond_with(@user)
   end
 
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to 'index'
+    redirect_to users_path
   end
 
   def index
