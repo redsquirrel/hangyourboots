@@ -7,8 +7,22 @@ gem 'omniauth-twitter'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-group :development do
+group :development, :test do
   gem 'sqlite3'
+  gem 'quiet_assets'
+  gem 'rspec-rails', '>=2.11.0'
+  gem 'factory_girl_rails', '>= 4.1.0'
+  gem 'guard-rspec'
+  gem 'minitest'
+end
+
+group :test do
+
+  gem 'faker'
+  gem 'capybara', ">= 1.1.2"
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'shoulda-matchers'
 end
 
 group :production do
@@ -28,6 +42,10 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+group :test do
+	gem 'database_cleaner'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
