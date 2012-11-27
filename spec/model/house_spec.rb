@@ -47,5 +47,5 @@ describe House do
 	  house.total_cost = nil
 	  house.should_not be_valid
 	end
-	
+
 end

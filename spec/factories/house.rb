@@ -9,6 +9,10 @@ FactoryGirl.define do
 		bathrooms   2
 		capacity 		6
 		total_cost 	15_000
+		
+		factory :invalid_house do
+			title 			nil
+			address 		nil
+		end
 	end
-	
 end
