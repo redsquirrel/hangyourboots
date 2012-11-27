@@ -7,8 +7,19 @@ gem 'rails', '3.2.9'
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'quiet_assets'
+  gem 'rspec-rails', '>=2.11.0'
+  gem 'factory_girl_rails', '>= 4.1.0'
+  gem 'guard-rspec'
+  gem 'minitest'
+end
+
+group :test do
+
+  gem 'faker'
+  gem 'capybara', ">= 1.1.2"
+  gem 'database_cleaner'
+  gem 'launchy'
   gem 'shoulda-matchers'
 end
 
