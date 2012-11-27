@@ -1,14 +1,18 @@
+require 'faker'
+
 FactoryGirl.define do 
 	factory :house do
-		title 			"Archstone"
-		address 		"3rd and folsom"
-		description "amazing house super awesome"
-		maps_link 	"http://www.google.com"
-		rooms 			2
-		beds 				3
-		bathrooms   2
-		capacity 		6
-		total_cost 	15_000
+    sequence :title do |n|
+      "Hacker House #{n}"
+    end
+    address     { Faker::Address.street_address }
+    description { Faker::Lorem.paragraph }
+    maps_link 	{ Faker::Internet.url }
+		rooms 			{ rand(0..4) }
+		beds 				{ rand(1..6) }
+		bathrooms   { rand(1..4) }
+		capacity 		{ rand(1..12) }
+		total_cost 	{ rand(200..15_000) }
 		
 		factory :invalid_house do
 			title 			nil
