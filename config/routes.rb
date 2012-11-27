@@ -7,6 +7,7 @@ Hangyourboots::Application.routes.draw do
 
   resources :users
   resources :houses
+  resources :users
 
 
   # The priority is based upon order of creation:

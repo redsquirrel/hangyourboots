@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
   validates_presence_of :name, :email, :gender, :provider, :uid
   validates_uniqueness_of :email, :case_sensitive => false
 
-
   def self.create_with_omniauth(auth)
     create! do |user|
       user.provider = auth["provider"]
@@ -15,4 +14,5 @@ class User < ActiveRecord::Base
       user.gender = "Please enter your gender"
     end
   end
+
 end

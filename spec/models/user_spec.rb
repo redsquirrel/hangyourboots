@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe User do
+
   let!(:user)  { FactoryGirl.create(:user) }
 
   context 'A FactoryGirl factory exists for generating users during testing' do
@@ -11,7 +12,7 @@ describe User do
       end
     end
 
-end
+  end
 
   context 'prior to creating user instances, valid information is provided' do
 
@@ -30,7 +31,6 @@ end
       end
     end
 
-
     it 'is invalid with no name' do
       user.name = nil
       user.should_not be_valid
@@ -46,6 +46,7 @@ end
       user.should_not be_valid
     end
 
+
     it "is invalid with no uid" do
       user.uid = nil
       user.should_not be_valid
@@ -55,6 +56,7 @@ end
       user.provider = nil
       user.should_not be_valid
     end
+
   end
 
 end
