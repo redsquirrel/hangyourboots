@@ -24,21 +24,20 @@ ActiveRecord::Schema.define(:version => 20121126232013) do
 
   create_table "houses", :force => true do |t|
     t.string   "title"
-    t.string   "address"
+    t.string   "address",     :null => false
     t.text     "description"
     t.string   "maps_link"
     t.integer  "rooms"
     t.integer  "beds"
     t.integer  "capacity"
-    t.integer  "total_cost"
-    t.integer  "distance_miles"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.integer  "total_cost",  :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name"
-    t.string   "email"
+    t.string   "name",       :null => false
+    t.string   "email",      :null => false
     t.string   "gender"
     t.text     "bio"
     t.datetime "created_at", :null => false
