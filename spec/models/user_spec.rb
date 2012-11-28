@@ -50,4 +50,5 @@ describe User do
     it { should have_one(:house).through(:commitment) }
     it { should have_one(:commitment) }
   end
+
 end
