@@ -8,7 +8,7 @@ describe User do
 
     describe '#create' do
       it 'is a valid factory for users' do
-        create(:user).should be_valid
+        FactoryGirl.create(:user).should be_valid
       end
     end
 
@@ -43,17 +43,6 @@ describe User do
 
     it 'is invalid with no gender' do
       user.gender = nil
-      user.should_not be_valid
-    end
-
-
-    it "is invalid with no uid" do
-      user.uid = nil
-      user.should_not be_valid
-    end
-
-    it "is invalid with no provider" do
-      user.provider = nil
       user.should_not be_valid
     end
 
