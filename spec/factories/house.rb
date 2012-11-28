@@ -1,6 +1,6 @@
 require 'faker'
 
-FactoryGirl.define do 
+FactoryGirl.define do
 	factory :house do
     sequence :title do |n|
       "Hacker House #{n}"
@@ -13,7 +13,8 @@ FactoryGirl.define do
 		bathrooms   { rand(1..4) }
 		capacity 		{ rand(1..12) }
 		total_cost 	{ rand(200..15_000) }
-		
+    image { File.open(File.join(Rails.root, '/spec/factories/images/house.jpg')) }
+
 		factory :invalid_house do
 			title 			nil
 			address 		nil

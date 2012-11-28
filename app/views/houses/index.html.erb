@@ -1,9 +1,11 @@
 <ul class='houses'>
 <% @houses.each do |house| %>
 <li class='house'>
+<%= image_tag house.image_url.to_s %>
 <%= house.title %>
 <%= house.total_cost %>
 <%= link_to 'Details', house_path(house) %>
 </li>
 <% end %>
 </ul>
+
