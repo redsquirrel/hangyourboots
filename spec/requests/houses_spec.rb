@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Sleepers" do
+describe "Houses" do
 
   describe "Index page" do
 
