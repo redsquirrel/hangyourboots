@@ -26,6 +26,7 @@ describe HousesController do
         expect {
           post :create, house: FactoryGirl.attributes_for(:house)
         }.to change(House, :count).by(1)
+
       end
 
       it "redirects to the house show page" do
