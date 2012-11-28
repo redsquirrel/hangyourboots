@@ -48,4 +48,9 @@ describe House do
 	  house.should_not be_valid
 	end
 
+  context "associations" do
+    it { should have_many(:users).through(:commitments) }
+    it { should have_many(:commitments) }
+  end
+
 end
