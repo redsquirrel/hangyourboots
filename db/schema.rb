@@ -48,14 +48,18 @@ ActiveRecord::Schema.define(:version => 20121128011049) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name",       :null => false
-    t.string   "email",      :null => false
+    t.string   "name",             :null => false
+    t.string   "email",            :null => false
     t.string   "gender"
     t.text     "bio"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.string   "provider"
     t.string   "uid"
+    t.string   "oauth_token"
+    t.string   "oauth_expires_at"
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
 end
