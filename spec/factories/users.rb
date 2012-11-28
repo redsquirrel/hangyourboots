@@ -10,10 +10,13 @@ FactoryGirl.define do
       user.oauth_token = "1234"
       user.oauth_expires_at = "1234",
       user.uid = "1234",
-      user.url = "http://www.example.com",
-      user.image = "http://www.example.com",
       user.provider = "facebook",
       user.save
     end
+  end
+  factory :facebook_profile do
+    image {"http://www.example.com"}
+    url {"http://www.example.com"}
+    user
   end
 end
