@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128005359) do
+ActiveRecord::Schema.define(:version => 20121128011049) do
 
   create_table "commitments", :force => true do |t|
     t.integer  "house_id"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(:version => 20121128005359) do
   end
 
   add_index "commitments", ["user_id", "house_id"], :name => "index_commitments_on_user_id_and_house_id", :unique => true
+
+  create_table "facebook_profiles", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.string   "image"
+    t.string   "url"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "facebook_profiles", ["user_id"], :name => "index_facebook_profiles_on_user_id", :unique => true
 
   create_table "houses", :force => true do |t|
     t.string   "title"

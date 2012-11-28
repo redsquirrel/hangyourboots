@@ -8,10 +8,9 @@ describe User do
 
     describe '#create' do
       it 'is a valid factory for users' do
-        create(:user).should be_valid
+        FactoryGirl.create(:user).should be_valid
       end
     end
-
   end
 
   context 'prior to creating user instances, valid information is provided' do
@@ -45,18 +44,10 @@ describe User do
       user.gender = nil
       user.should_not be_valid
     end
-
-
-    it "is invalid with no uid" do
-      user.uid = nil
-      user.should_not be_valid
-    end
-
-    it "is invalid with no provider" do
-      user.provider = nil
-      user.should_not be_valid
-    end
-
   end
 
+  context "associations" do
+    it { should have_one(:house).through(:commitment) }
+    it { should have_one(:commitment) }
+  end
 end
