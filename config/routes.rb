@@ -4,9 +4,9 @@ Hangyourboots::Application.routes.draw do
   resources :users
   resources :houses
 
-  match "/auth/:provider/callback" => "sessions#create"
-  match 'auth/failure', to: redirect('www.google.com')
-  match "/signout" => "sessions#destroy", :as => :signout
+  match 'auth/:provider/callback', to: 'sessions#create'
+  match 'auth/failure', to: redirect('/')
+  match 'signout', to: 'sessions#destroy', as: 'signout'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
