@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
 
   has_one :commitment
   has_one :facebook_profile
+  has_one :commitment
+  has_one :house, :through => :commitment
   delegate :image, :url, :to =>:facebook_profile
 
   validates_presence_of :name, :email, :gender
