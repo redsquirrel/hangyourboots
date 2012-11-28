@@ -55,14 +55,21 @@ RSpec.configure do |config|
 
   config.include Capybara::DSL
   config.include FactoryGirl::Syntax::Methods
-  config.include Capybara::DSL
 end
 
 OmniAuth.config.test_mode = true
-OmniAuth.config.add_mock(:twitter, {  :provider    => "twitter",
+OmniAuth.config.add_mock(:facebook, { :provider    => "facebook",
                                       :uid         => "1234",
-                                      :user_info   => {   :name       => "Bob hope",
-                                                          :nickname   => "bobby",
-                                                          :urls       => {:Twitter => "www.twitter.com/bobster"}},
-                                      :credentials => {  :token => "lk2j3lkjasldkjflk3ljsdf"} })
+                                      :info        => { :name  => "Jonathan Pepin",
+                                                        :email => "jypepin@facebook.com",
+                                                        :image => 'http://graph.facebook.com/1234567/picture?type=square',
+                                                        :urls => { :Facebook => 'http://www.facebook.com/jbloggs' }
+                                                      },
+                                      :credentials => { :token      => "lk2j3lkjasldkjflk3ljsdf",
+                                                        :expires_at =>  1321747205,
+                                                        :expires    => true
+                                                      },
+                                      :extra       => { :raw_info   => {:gender => "male"}}
+
+                                    })
 

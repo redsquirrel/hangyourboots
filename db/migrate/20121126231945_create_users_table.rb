@@ -5,7 +5,9 @@ class CreateUsersTable < ActiveRecord::Migration
       t.string :email, :null => false
       t.string :gender
       t.text  :bio
+
       t.timestamps
     end
+    add_index :users, :email, :unique => true
   end
 end
