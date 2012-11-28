@@ -11,7 +11,6 @@ describe User do
         FactoryGirl.create(:user).should be_valid
       end
     end
-
   end
 
   context 'prior to creating user instances, valid information is provided' do
@@ -45,7 +44,10 @@ describe User do
       user.gender = nil
       user.should_not be_valid
     end
-
   end
 
+  context "associations" do
+    it { should have_one(:house).through(:commitment) }
+    it { should have_one(:commitment) }
+  end
 end
