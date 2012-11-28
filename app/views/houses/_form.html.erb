@@ -1,0 +1,43 @@
+<%= form_for @house, :html => {:multipart => true} do |f| %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :maps_link %><br />
+    <%= f.text_field :maps_link %>
+  </p>
+  <p>
+    <%= f.label :rooms %><br />
+    <%= f.number_field :rooms %>
+  </p>
+  <p>
+    <%= f.label :beds %><br />
+    <%= f.number_field :beds %>
+  </p>
+  <p>
+    <%= f.label :bathrooms %><br />
+    <%= f.number_field :bathrooms %>
+  </p>
+  <p>
+    <%= f.label :capacity %><br />
+    <%= f.number_field :capacity %>
+  </p>
+  <p>
+    <%= f.label :total_cost %><br />
+    <%= f.number_field :total_cost %>
+  </p>
+  <p>
+    <%= f.file_field :image %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
