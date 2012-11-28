@@ -60,4 +60,6 @@ ActiveRecord::Schema.define(:version => 20121128011049) do
     t.string   "oauth_expires_at"
   end
 
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+
 end
