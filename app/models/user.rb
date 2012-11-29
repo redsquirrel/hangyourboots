@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :gender, :bio
 
   has_one :facebook_profile
-  has_one :commitment
+  has_one :commitment, :dependent => :destroy
   has_one :house, :through => :commitment
   delegate :image, :url, :to =>:facebook_profile
 
