@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe HousesController do
 
+  # Skip authorization for the unit controller tests
+  HousesController.send(:skip_before_filter,:authorize_user)
+
   describe 'GET #index' do
     it "gets all the houses in the database" do
       house = FactoryGirl.create(:house)

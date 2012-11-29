@@ -26,4 +26,8 @@ class User < ActiveRecord::Base
       user.build_facebook_profile :image => auth["info"]["image"], :url => auth["info"]["urls"]["Facebook"]
     end
   end
+
+  def is_admin?
+    admin == true
+  end
 end
