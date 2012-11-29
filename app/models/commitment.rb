@@ -5,11 +5,19 @@ class Commitment < ActiveRecord::Base
 
   validates_uniqueness_of :user_id
   validate :check_capacity
+  validates_associated :user, :house
+  #validate :prior_commitment?
 
   def check_capacity
     if house.full?
       errors.add(:house, "is full. Please try a different house")
     end
   end
+
+  # def prior_commitment?
+  #   if user.house_id != nil
+  #     errors.add(:user, "is already committed. Please uncommit to change houses.")
+  #   end
+  # end
 
 end

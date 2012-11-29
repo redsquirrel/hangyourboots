@@ -1,17 +1,22 @@
 class CommitmentsController < ApplicationController
 
   def new
-    @commitment = Commitment.new
+    commitment = Commitment.new
   end
 
   def create
-    @current_user.build_commitment(:house_id => params[:id])
-    if @current_user.save
-      flash[:notice] = "Successfully joined a house"
-      redirect_to root_url
+    if current_user.commitment
+      flash[:alert] = "You've already committed to a house"
     else
-      flash[:alert] = "Unable to join house"
+      current_user.build_commitment(:house_id => params[:id])
+      if current_user.save
+        flash[:notice] = "Successfully joined a house"
+      else
+        flash[:alert] = "Unable to join house"
+      end
     end
+    redirect_to house_path
   end
+
 
 end
