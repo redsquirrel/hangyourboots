@@ -11,7 +11,13 @@
 <%= @house.maps_link %>
 <%= @house.total_cost %>
 
+<% unless current_user.commitment %>
 <%= button_to "Join House", "/houses/#{@house.id}/commitments/create", :method => :post %>
+<% end %>
+
+<% if current_user.commitment && current_user.commitment.house_id == @house.id %>
+<%= button_to "Leave House", "/houses/#{@house.id}/commitments/#{current_user.commitment.id}", :method => :delete %>
+<% end %>
 
 <%= render 'facebook_comments' %>
 
