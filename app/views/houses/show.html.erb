@@ -1,17 +1,54 @@
-<%= render 'google_map_directions' %>
+<h1><%= @house.title %></h1>
+<div id="description"><%= @house.description %></div>
 
-<%= @house.title %>
-<%= @house.description %>
+<div class="left" style="float:left;border:1px solid red;width:60%;">
+  <div id="image"><%= image_tag @house.image %></div>
+  <%= render 'google_map_directions' %>
+  <%= render 'facebook_comments' %>
+</div>
 
-<%= @house.rooms %>
-<%= @house.capacity %>
-<%= @house.beds %>
-<%= @house.bathrooms %>
-<div id="address"><%= @house.address %></div>
-<%= @house.maps_link %>
-<%= @house.total_cost %>
+<div class="right" style="float:right;border:1px solid red;width:35%;">
+  <table>
+    <tr>
+      <td>dates:</td>
+      <td>jan 15 - march 15</td>
+    </tr>
+    <tr>
+      <td>capacity:</td>
+      <td><%= @house.capacity %></td>
+    </tr>
+    <tr>
+      <td>beds:</td>
+      <td><%= @house.beds %></td>
+    </tr>
+    <tr>
+      <td>rooms:</td>
+      <td><%= @house.rooms %></td>
+    </tr>
+    <tr>
+      <td>bathrooms:</td>
+      <td><%= @house.bathrooms %></td>
+    </tr>
+    <tr>
+      <td>address:</td>
+      <td><%= @house.address %></td>
+    </tr>
+    <tr>
+      <td>link:</td>
+      <td><%= @house.maps_link %></td>
+    </tr>
+    <tr>
+      <td>cost:</td>
+      <td><%= @house.total_cost %></td>
+    </tr>
+    <tr>
+      <td>per:</td>
+      <td><%= @house.total_cost / @house.capacity %></td>
+    </tr>
+  </table>
 
-<%= button_to "Join House", "/houses/#{@house.id}/commitments/create", :method => :post %>
+  <%= button_to "Join House", "/houses/#{@house.id}/commitments/create", :method => :post %>
 
-<%= render 'facebook_comments' %>
+</div>
+
 
