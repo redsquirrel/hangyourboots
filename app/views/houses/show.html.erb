@@ -7,10 +7,11 @@
 <%= @house.capacity %>
 <%= @house.beds %>
 <%= @house.bathrooms %>
-<%= @house.address %>
+<div id="address"><%= @house.address %></div>
 <%= @house.maps_link %>
 <%= @house.total_cost %>
 
 <%= button_to "Join House", "/houses/#{@house.id}/commitments/create", :method => :post %>
 
 <%= render 'facebook_comments' %>
+
