@@ -31,5 +31,15 @@ describe Commitment do
         }.not_to change(Commitment, :count).by(1)
     end
 
+    it "should not be able to have more than one commitment" do
+      @user.build_commitment(:house_id => @house.id)
+      @user.save
+      @house2 = FactoryGirl.create(:house, :capacity => 5)
+      expect {
+        @user.build_commitment(:house_id =>@house2.id)
+        @user.save
+      }.not_to change(Commitment, :count).by(1)
+    end
+
   end
 end
