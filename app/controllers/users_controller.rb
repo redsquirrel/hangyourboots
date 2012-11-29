@@ -47,6 +47,6 @@ class UsersController < ApplicationController
 
   private
   def authorize_user
-    redirect_to root_url unless current_user == @user || @user.is_admin?
+    redirect_to root_url unless current_user == @user || current_user.is_admin?
   end
 end
