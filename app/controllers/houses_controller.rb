@@ -1,7 +1,7 @@
 class HousesController < ApplicationController
 
 	respond_to :html
-  before_filter :authorize_user, :except => :show
+  before_filter :authorize_user, :except => [:show, :index]
 
   def index
     @houses = House.all

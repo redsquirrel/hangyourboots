@@ -5,6 +5,9 @@ describe UsersController do
     @a_user = create(:user)
   end
 
+  # Skip authorization for the unit controller tests
+  HousesController.send(:skip_before_filter,:authorize_user)
+
   describe 'GET #new' do
     it 'assigns a new user to @user' do
       get :new

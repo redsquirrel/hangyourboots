@@ -20,14 +20,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    redirect_to root_url unless current_user == @user
     @user.update_attributes(params[:user])
     respond_with(@user)
   end
 
   def destroy
     @user = User.find(params[:id])
-    redirect_to root_url unless current_user == @user
     @user.destroy
     redirect_to users_path
   end
