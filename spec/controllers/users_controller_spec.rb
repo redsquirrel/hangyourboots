@@ -1,12 +1,13 @@
 require 'spec_helper'
 
 describe UsersController do
-  before do
-    @a_user = create(:user)
+  before(:each) do
+    @a_user = create(:admin_user)
+    set_user_session @a_user
   end
 
   # Skip authorization for the unit controller tests
-  HousesController.send(:skip_before_filter,:authorize_user)
+  # HousesController.send(:skip_before_filter,:authorize_user)
 
   describe 'GET #new' do
     it 'assigns a new user to @user' do

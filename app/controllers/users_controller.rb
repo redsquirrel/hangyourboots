@@ -38,13 +38,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def make_admin
-    user = User.find(params[:user_id])
-    user.admin = true
-    user.save!
-    redirect_to users_path
-  end
-
   private
   def authorize_user
     redirect_to root_url unless current_user == @user || current_user.is_admin?
