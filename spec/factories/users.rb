@@ -13,6 +13,9 @@ FactoryGirl.define do
       user.provider = "facebook",
       user.save
     end
+    factory :admin_user do |user|
+      after(:create) {user.admin = true}
+    end
   end
   factory :facebook_profile do
     image {"http://www.example.com"}
