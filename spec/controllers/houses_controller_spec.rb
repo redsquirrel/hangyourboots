@@ -14,10 +14,20 @@ describe HousesController do
   end #GET index
 
   describe "GET #show" do
-    it "assigns the requested house to @house" do
-      house = FactoryGirl.create(:house)
-      get :show, id: house
-      assigns(:house).should eq house
+    before(:each) { @house = FactoryGirl.create(:house) }
+
+    it "assigns the requested house to @house" do      
+      get :show, id: @house
+      assigns(:house).should eq @house
+    end
+
+    it "assigns the committed users to @roommates" do
+      user = FactoryGirl.create(:user)
+      commitment = @house.commitments.new
+      commitment.user_id = user.id
+      commitment.save
+      get :show, id: @house
+      @house.users.should eq [user]
     end
   end #@GET show
 
