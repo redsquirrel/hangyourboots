@@ -86,5 +86,4 @@ describe "Houses" do
       page.should_not have_button("Leave House")
     end
   end
-
 end
