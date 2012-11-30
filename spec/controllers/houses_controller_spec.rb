@@ -3,6 +3,11 @@ require 'spec_helper'
 describe HousesController do
 
   shared_examples("member access to houses") do
+    it "gets all the houses in the database" do
+      house = FactoryGirl.create(:house)
+      get :index
+      assigns(:houses).should eq [house]
+    end
     describe 'GET #index' do
       it "gets all the houses in the database" do
         house = FactoryGirl.create(:house)

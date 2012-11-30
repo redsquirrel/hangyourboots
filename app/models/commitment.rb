@@ -14,10 +14,4 @@ class Commitment < ActiveRecord::Base
     end
   end
 
-  # def prior_commitment?
-  #   if user.house_id != nil
-  #     errors.add(:user, "is already committed. Please uncommit to change houses.")
-  #   end
-  # end
-
 end

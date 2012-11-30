@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe "Houses" do
+  # TODO: Remove this and test actual authentication
+  before :each do
+    @user = create(:user)
+    HousesController.any_instance.stub(:current_user) {@user}
+  end
 
   describe "Index page" do
 
@@ -11,15 +16,12 @@ describe "Houses" do
       visit houses_path
     end
 
+
     it "displays the title of each house" do
       House.all.each do |house|
         page.should have_content(house.title)
       end
     end
-
-    it "displays a thumbnail image for each house"
-
-    it "displays how many people are living in each house"
 
     it "displays the total cost of each house" do
       all('span.total-cost').each do |span| 
@@ -38,6 +40,7 @@ describe "Houses" do
   describe "Show page" do
     before do
       @house = create(:house, :rooms => 3, :beds => 4, :bathrooms => 2, :capacity => 6)
+      user = create(:user)
       visit house_path(@house)
     end
 
