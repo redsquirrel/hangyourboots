@@ -21,9 +21,14 @@ respond_to :html
 
   def destroy
     @commitment = current_commitment
-    @commitment.destroy
-    flash[:alert] = "You are no longer committed to a house"
-    redirect_to root_path
+    if @commitment.house.full?
+      flash[:alert] = "Your housing is already planned."
+      redirect_to @commitment.house
+    else
+      @commitment.destroy
+      flash[:alert] = "You are no longer committed to a house"
+      redirect_to root_path
+    end
   end
 
   def update

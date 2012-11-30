@@ -24,7 +24,7 @@ describe "Houses" do
     end
 
     it "displays the total cost of each house" do
-      all('span.total-cost').each do |span| 
+      all('span.total-cost').each do |span|
         span.should have_content("$")
       end
     end
@@ -39,8 +39,10 @@ describe "Houses" do
 
   describe "Show page" do
     before do
-      @house = create(:house, :rooms => 3, :beds => 4, :bathrooms => 2, :capacity => 6)
-      user = create(:user)
+      @house = create(:house, :rooms => 3, :beds => 4, :bathrooms => 2, :capacity => 1)
+      com = Commitment.new(:house_id => @house.id)
+      com.user_id = @user.id
+      com.save
       visit house_path(@house)
     end
 
@@ -80,5 +82,8 @@ describe "Houses" do
       page.should have_content(@house.rooms)
     end
 
+    it "does not display the leave button if house is full" do
+      page.should_not have_button("Leave House")
+    end
   end
 end
