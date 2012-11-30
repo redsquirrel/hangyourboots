@@ -2,16 +2,12 @@ require 'spec_helper'
 
 describe HousesController do
 
-<<<<<<< HEAD
-  describe 'GET #index' do
+  shared_examples("member access to houses") do
     it "gets all the houses in the database" do
       house = FactoryGirl.create(:house)
       get :index
       assigns(:houses).should eq [house]
     end
-  end #GET index
-=======
-  shared_examples("member access to houses") do
     describe 'GET #index' do
       it "gets all the houses in the database" do
         house = FactoryGirl.create(:house)
@@ -19,7 +15,6 @@ describe HousesController do
         assigns(:houses).should eq [house]
       end
     end #GET index
->>>>>>> master
 
     describe "GET #show" do
       it "assigns the requested house to @house" do
