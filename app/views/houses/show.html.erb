@@ -4,7 +4,7 @@
     <div id="map_canvas">
       <%= render 'google_map_directions' %>
     </div>
-    <%= @house.description %>
+    <p><%= @house.description %></p>
     <%= @house.rooms %>
     <%= @house.capacity %>
     <%= @house.beds %>
@@ -30,9 +30,22 @@
 
   <div class="span6">
     <h2>Roommates</h2>
-    <% @roommates.each do |roommate| %>
-      <img src="<%=roommate.image%>" />
-      <%= roommate.name %>
+    <% unless @roommates == nil %>
+      <% @roommates.each do |roommate| %>
+        <div class="row">
+          <div class="span2">
+            <%= image_tag "http://graph.facebook.com/#{roommate.uid}/picture?type=large",
+                          :width => "150",
+                          :height => "129",
+                          :class => "img-polaroid" %>
+            <br />
+            <strong><%= roommate.name %></strong>
+          </div>
+          <div class="span4">
+            <p class="bubble">....<%= roommate.bio %></p>
+          </div>
+        </div>
+      <% end %>
     <% end %>
     <%= render 'facebook_comments' %>
   </div>
