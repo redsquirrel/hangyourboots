@@ -1,11 +1,19 @@
-<ul class='houses'>
-<% @houses.each do |house| %>
-<li class='house'>
-<%= image_tag house.image_url.to_s %>
-<%= house.title %>
-<%= house.total_cost %>
-<%= link_to 'Details', house_path(house) %>
-</li>
+<div class='houses'>
+<% @houses.each_with_index do |house, index| %>
+  <div class='row house <%= index % 2 != 0 ? "alt" : "" %>'>
+    <div class="span4">
+      <%= image_tag house.image_url.to_s,
+            :class => 'img-polaroid' %>
+    </div>
+    <div class="span4">
+      <%= house.title %>
+    </div>
+    <div class="span4 details">
+      <span class="total-cost"><%= number_to_currency(house.total_cost) %></span>
+      <br />
+      <%= link_to 'Details', house_path(house),
+                             :class => 'btn btn-primary btn-large details' %>
+    </div>
+  </div>
 <% end %>
-</ul>
-
+</div>

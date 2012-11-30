@@ -1,1 +1,11 @@
-.nothing { display: hidden; }
+body.houses.index .content { margin: 0 -10px;}
+
+.row .house { 
+	margin-bottom: 1em;
+	img { margin: .5em; }
+}
+
+.total-cost { font-family: serif; font-size: 1.6em; font-weight: lighter; }
+div.span4.details { text-align: center; margin-top: 40px;}
+
+.alt { background-color: #ccc; }
