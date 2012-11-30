@@ -22,6 +22,7 @@ class HousesController < ApplicationController
 
 	def show
     @house = current_house
+    @roommates = @house.users
 	end
 
 	def update
