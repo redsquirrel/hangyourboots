@@ -10,7 +10,11 @@ require 'capybara/rails'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+
 RSpec.configure do |config|
+
+  Capybara.javascript_driver = :webkit
+
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
   end
