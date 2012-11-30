@@ -3,7 +3,8 @@ class House < ActiveRecord::Base
   								:beds, :bathrooms, :capacity, :total_cost, :image
 
   validates :title, :address, :description, :maps_link,
-  					:rooms, :beds, :bathrooms, :capacity, :total_cost, 		:presence => true
+  					:rooms, :beds, :bathrooms, :capacity, :total_cost,
+            :presence => true
 
   mount_uploader :image, ImageUploader
   has_many :commitments
