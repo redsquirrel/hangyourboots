@@ -1,3 +1,5 @@
+/* ======= Houses#index ======= */
+
 body.houses.index .content { margin: 0 -10px;}
 
 .row .house { 
@@ -18,3 +20,35 @@ body.houses.index .content { margin: 0 -10px;}
 div.span4.details { text-align: center; margin-top: 40px;}
 
 .alt { background-color: #ccc; }
+
+/* ====== Houses#show ========== */
+
+#map_canvas {
+	width: 375px;
+	height: 225px;
+	background-color: white;
+	border: 5px solid white;
+	-webkit-box-shadow: 0 5px 3px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 5px 3px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+	margin-bottom: 10px;
+	padding: 4px;
+}
+
+div.fb-comments.fb_iframe_widget {
+		margin-left: 5px;
+		width: 100%;
+		margin: 0 auto;
+	}
+
+@media (min-width: 768px) and (max-width: 979px) {
+	h2 { margin-left: 35px; }
+	div.fb-comments.fb_iframe_widget {
+		margin-left: 35px;
+		border: none;
+	}
+}
+
+label.fbCommentButton.uiButton.uiButtonConfirm {
+
+}

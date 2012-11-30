@@ -1,22 +1,39 @@
-<%= render 'google_map_directions' %>
+<div class="row">
+  <div class="span6">
+    <h1><%= @house.title %></h1>
+    <div id="map_canvas">
+      <%= render 'google_map_directions' %>
+    </div>
+    <%= @house.description %>
+    <%= @house.rooms %>
+    <%= @house.capacity %>
+    <%= @house.beds %>
+    <%= @house.bathrooms %>
+    <div id="address">
+      <%= @house.address %>
+    </div>
+    <%= @house.maps_link %>
+    <%= @house.total_cost %>
 
-<%= @house.title %>
-<%= @house.description %>
+    <% unless current_user.commitment %>
+      <%= button_to "Join House",
+                    "/houses/#{@house.id}/commitments/create",
+                    :method => :post %>
+    <% end %>
 
-<%= @house.rooms %>
-<%= @house.capacity %>
-<%= @house.beds %>
-<%= @house.bathrooms %>
-<div id="address"><%= @house.address %></div>
-<%= @house.maps_link %>
-<%= @house.total_cost %>
+    <% if current_user.commitment && current_user.commitment.house_id == @house.id %>
+      <%= button_to "Leave House",
+                    "/houses/#{@house.id}/commitments/#{current_user.commitment.id}",
+                    :method => :delete %>
+    <% end %>
+  </div>
 
-<% unless current_user.commitment %>
-<%= button_to "Join House", "/houses/#{@house.id}/commitments/create", :method => :post %>
-<% end %>
-
-<% if current_user.commitment && current_user.commitment.house_id == @house.id %>
-<%= button_to "Leave House", "/houses/#{@house.id}/commitments/#{current_user.commitment.id}", :method => :delete %>
-<% end %>
-
-<%= render 'facebook_comments' %>
+  <div class="span6">
+    <h2>Roommates</h2>
+    <% @roommates.each do |roommate| %>
+      <img src="<%=roommate.image%>" />
+      <%= roommate.name %>
+    <% end %>
+    <%= render 'facebook_comments' %>
+  </div>
+</div>

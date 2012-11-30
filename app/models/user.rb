@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
       user.oauth_expires_at = Time.at(auth["credentials"]["expires_at"])
       user.gender = auth["extra"]["raw_info"]["gender"]
 
-      user.build_facebook_profile :image => auth["info"]["image"], :url => auth["info"]["urls"]["Facebook"]
+      user.build_facebook_profile :image => auth["info"]["image"]["large"], :url => auth["info"]["urls"]["Facebook"]
     end
   end
 
