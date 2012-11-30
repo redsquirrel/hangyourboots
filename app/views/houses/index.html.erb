@@ -6,7 +6,22 @@
             :class => 'img-polaroid' %>
     </div>
     <div class="span4 title">
-      <%= house.title %>
+      <div class="row">
+        <div class="span4">
+          <%= house.title %>
+        </div>
+      </div>
+      <div class="row commitments">
+        <div class="span4">
+          <% house.capacity.times do |count| %>
+            <% if count + 1 <= house.users.length %>
+              <i class="icon-user"></i>
+            <% else %>
+              <i class="icon-user icon-white"></i>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
     <div class="span4 details">
       <span class="total-cost"><%= number_to_currency(house.total_cost) %></span>
