@@ -1,4 +1,14 @@
 class SessionsController < ApplicationController
+  def new
+  	# go to invite page
+  	if Invitation.valid_code?(params[:invite_code])
+  		redirect_to("/auth/facebook")
+  	else
+  		flash[:notice] = "Invalid invitation code"
+  		render 'login/show'
+  	end
+  end
+
   def create
     user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id
