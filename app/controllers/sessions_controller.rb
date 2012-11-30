@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   	if Invitation.valid_code?(params[:invite_code])
   		redirect_to("/auth/facebook")
   	else
-  		flash[:notice] = "Invalid invitation code"
+  		flash[:alert] = "Invalid invitation code"
   		render 'login/show'
   	end
   end
