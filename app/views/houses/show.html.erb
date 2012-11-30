@@ -1,22 +1,55 @@
-<%= render 'google_map_directions' %>
+<div class="row">
+  <div class="span6">
+    <h1><%= @house.title %></h1>
+    <div id="map_canvas">
+      <%= render 'google_map_directions' %>
+    </div>
+    <p><%= @house.description %></p>
+    <%= @house.rooms %>
+    <%= @house.capacity %>
+    <%= @house.beds %>
+    <%= @house.bathrooms %>
+    <div id="address">
+      <%= @house.address %>
+    </div>
+    <%= @house.maps_link %>
+    <%= @house.total_cost %>
 
-<%= @house.title %>
-<%= @house.description %>
+    <% unless current_user.commitment || @house.full? %>
+      <%= button_to "Join House",
+                    "/houses/#{@house.id}/commitments/create",
+                    :method => :post %>
+    <% end %>
 
-<%= @house.rooms %>
-<%= @house.capacity %>
-<%= @house.beds %>
-<%= @house.bathrooms %>
-<div id="address"><%= @house.address %></div>
-<%= @house.maps_link %>
-<%= @house.total_cost %>
+    <% if (current_user.commitment &&
+           current_user.commitment.house_id == @house.id &&
+           !current_user.house.full?) %>
+              <%= button_to "Leave House",
+                            "/houses/#{@house.id}/commitments/#{current_user.commitment.id}",
+                            :method => :delete %>
+    <% end %>
+  </div>
 
-<% unless current_user.commitment || @house.full? %>
-<%= button_to "Join House", "/houses/#{@house.id}/commitments/create", :method => :post %>
-<% end %>
+  <div class="span6">
+    <h2>Roommates</h2>
+    <% unless @roommates == nil %>
+      <% @roommates.each do |roommate| %>
+        <div class="row">
+          <div class="span2">
+            <%= image_tag "http://graph.facebook.com/#{roommate.uid}/picture?type=large",
+                          :width => "150",
+                          :height => "129",
+                          :class => "img-polaroid" %>
+            <br />
+            <strong><%= roommate.name %></strong>
+          </div>
+          <div class="span4">
+            <p class="bubble">....<%= roommate.bio %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <%= render 'facebook_comments' %>
+  </div>
+</div>
 
-<% if (current_user.commitment && current_user.commitment.house_id == @house.id && !current_user.house.full?) %>
-<%= button_to "Leave House", "/houses/#{@house.id}/commitments/#{current_user.commitment.id}", :method => :delete %>
-<% end %>
-
-<%= render 'facebook_comments' %>
