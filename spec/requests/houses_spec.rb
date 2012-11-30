@@ -24,8 +24,8 @@ describe "Houses" do
     end
 
     it "displays the total cost of each house" do
-      House.all.each do |house|
-        page.should have_content(house.total_cost)
+      all('span.total-cost').each do |span| 
+        span.should have_content("$")
       end
     end
 

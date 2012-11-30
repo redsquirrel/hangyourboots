@@ -10,7 +10,6 @@
 <div id="address"><%= @house.address %></div>
 <%= @house.maps_link %>
 <%= @house.total_cost %>
-<%= @roommates %>
 
 <% unless current_user.commitment %>
 <%= button_to "Join House", "/houses/#{@house.id}/commitments/create", :method => :post %>
@@ -21,4 +20,3 @@
 <% end %>
 
 <%= render 'facebook_comments' %>
-
