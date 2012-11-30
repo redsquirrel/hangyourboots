@@ -15,6 +15,8 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :truncation
   end
 
+  config.include LoginMacros
+
   config.before(:each) do
     DatabaseCleaner.start
   end

@@ -13,8 +13,11 @@ FactoryGirl.define do
       user.provider = "facebook",
       user.save
     end
-    factory :admin_user do |user|
-      after(:create) {user.admin = true}
+    factory :admin_user do
+      after(:create) do |user|
+        user.admin = true
+        user.save
+      end
     end
   end
   factory :facebook_profile do
