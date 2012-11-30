@@ -16,6 +16,11 @@ respond_to :html
         flash[:alert] = "Unable to join house"
       end
     end
+    if current_user.house.full?
+      current_user.house.users.each do |user|
+        UserMailer.house_confirmation(user).deliver
+      end
+    end
     redirect_to house_path
   end
 
