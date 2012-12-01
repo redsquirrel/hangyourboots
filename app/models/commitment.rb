@@ -6,7 +6,6 @@ class Commitment < ActiveRecord::Base
   validates_uniqueness_of :user_id
   validate :check_capacity
   validates_associated :user, :house
-  #validate :prior_commitment?
 
   def check_capacity
     if house.full?
