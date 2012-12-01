@@ -28,7 +28,7 @@ respond_to :html
     else
       @commitment.destroy
       flash[:alert] = "You are no longer committed to a house"
-      redirect_to root_path
+      redirect_to houses_path
     end
   end
 
