@@ -16,14 +16,24 @@ respond_to :html
         flash[:alert] = "Unable to join house"
       end
     end
+    if current_user.house.full?
+      current_user.house.users.each do |user|
+        UserMailer.house_confirmation(user).deliver
+      end
+    end
     redirect_to house_path
   end
 
   def destroy
     @commitment = current_commitment
-    @commitment.destroy
-    flash[:alert] = "You are no longer committed to a house"
-    redirect_to root_path
+    if @commitment.house.full?
+      flash[:alert] = "Your housing is already planned."
+      redirect_to @commitment.house
+    else
+      @commitment.destroy
+      flash[:alert] = "You are no longer committed to a house"
+      redirect_to root_path
+    end
   end
 
   def update

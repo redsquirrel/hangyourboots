@@ -1,22 +1,96 @@
-<%= render 'google_map_directions' %>
+<div class="row">
+  <div class="span5">
+    <h1><%= @house.title %></h1>
+    <div id="map_canvas">
+      <%= render 'google_map_directions' %>
+    </div>
+    <p><%= link_to "Google Maps Link", @house.maps_link %></p>
 
-<%= @house.title %>
-<%= @house.description %>
+    <h3>About This House</h3>
+    <p><%= @house.description %></p>
 
-<%= @house.rooms %>
-<%= @house.capacity %>
-<%= @house.beds %>
-<%= @house.bathrooms %>
-<div id="address"><%= @house.address %></div>
-<%= @house.maps_link %>
-<%= @house.total_cost %>
+    <div class="pull-right price-and-button">
+      <span class="total-cost"><%= number_to_currency(@house.total_cost) %></span>
 
-<% unless current_user.commitment %>
-<%= button_to "Join House", "/houses/#{@house.id}/commitments/create", :method => :post %>
-<% end %>
+      <br />
 
-<% if current_user.commitment && current_user.commitment.house_id == @house.id %>
-<%= button_to "Leave House", "/houses/#{@house.id}/commitments/#{current_user.commitment.id}", :method => :delete %>
-<% end %>
+      <% unless current_user.commitment || @house.full? %>
+        <%= link_to "Join House",
+                      "/houses/#{@house.id}/commitments/create",
+                      :method => :post,
+                      :class => "btn btn-success btn-default details" %>
+      <% end %>
 
-<%= render 'facebook_comments' %>
+      <% if (current_user.commitment &&
+             current_user.commitment.house_id == @house.id &&
+             !current_user.house.full?) %>
+                <%= link_to "Leave House",
+                            "/houses/#{@house.id}/commitments/#{current_user.commitment.id}",
+                            :method => :delete,
+                            :class => "btn btn-danger btn-default details" %>
+      <% end %>
+    </div>
+
+    <h3>Details:</h3>
+    <div id="houses-show-details">
+      <div class="row alt">
+        <div class="span5"><span id="address"><p><%= @house.address %></p></span></div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <strong>rooms: </strong><span class="pull-right"><%= @house.rooms %></span>
+        </div>
+        <div class="span1">
+          &nbsp;
+        </div>
+        <div class="span2">
+          <strong>beds: </strong><span class="pull-right"><%= @house.beds %></span>
+        </div>
+      </div>
+      <div class="row alt">
+        <div class="span2">
+          <strong>capacity: </strong><span class="pull-right"><%= @house.capacity %></span>
+        </div>
+        <div class="span1">
+          &nbsp;
+        </div>
+        <div class="span2">
+          <strong>bath: </strong><span class="pull-right"><%= @house.bathrooms %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="span7">
+    <h2>Roommates</h2>
+    <% unless @roommates == nil %>
+    <% @roommates.each do |roommate| %>
+    <div class="row">
+      <div class="span2">
+        <%= image_tag "http://graph.facebook.com/#{roommate.uid}/picture?type=large",
+                      :width => "150",
+                      :height => "129",
+                      :class => "img-polaroid" %>
+        <br />
+        <strong><%= roommate.name %></strong>
+      </div>
+      <div class="span5">
+        <p class="bubble">
+          <% if roommate.bio == nil %>
+            Hey! Fill in your bio so we can get rid of this boring Lorem Ipsum text here: Tenetur temporibus nostrum. Rem qui reprehenderit incidunt exercitationem nemo sint. Enim in culpa ab sit consequatur pariatur id.
+          <% else %>
+            <%= roommate.bio %>
+          <% end %>
+          </p>
+      </div>
+    </div>
+    <% end %>
+    <% end %>
+    <div class="row">
+      <div class="span7">
+        <%= render 'facebook_comments' %>
+      </div>
+    </div>
+  </div>
+</div>
+
