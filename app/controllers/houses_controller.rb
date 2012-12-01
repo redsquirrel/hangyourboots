@@ -2,6 +2,7 @@ class HousesController < ApplicationController
 
 	respond_to :html
   before_filter :authorize_user, :except => [:show, :index]
+  before_filter :sign_in
 
   def index
     @houses = House.all
@@ -45,6 +46,12 @@ class HousesController < ApplicationController
   def authorize_user
     unless current_user.is_admin?
       flash[:alert] = "Unauthorized action"
+      redirect_to root_url
+    end
+  end
+
+  def sign_in
+    unless current_user
       redirect_to root_url
     end
   end
