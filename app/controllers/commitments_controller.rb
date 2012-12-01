@@ -1,10 +1,6 @@
 class CommitmentsController < ApplicationController
 respond_to :html
 
-  def new
-    commitment = Commitment.new
-  end
-
   def create
     if current_user.commitment
       flash[:alert] = "You've already committed to a house"
