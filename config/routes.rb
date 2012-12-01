@@ -1,14 +1,16 @@
 Hangyourboots::Application.routes.draw do
 
-  root :to => "houses#index"
+  root :to => "login#show"
   resources :users
   resources :houses do
     resources :commitments
   end
 
   # TODO: Create a home page / sign-in page
-  match 'auth/:provider/callback', to: 'sessions#create'
-  match 'auth/failure', to: "houses#index"
+  match 'join', to: 'login#new', :as => 'join', :via => 'post'
+
+  match 'auth/:provider/callback/', to: 'sessions#create'
+  match 'auth/failure', to: "login#show"
   match 'signout', to: 'sessions#destroy', as: 'signout'
 
   post '/houses/:id/commitments/create' => 'commitments#create'

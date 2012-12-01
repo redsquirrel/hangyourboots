@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121129050051) do
+ActiveRecord::Schema.define(:version => 20121201002651) do
 
   create_table "commitments", :force => true do |t|
     t.integer  "house_id"
@@ -47,6 +47,15 @@ ActiveRecord::Schema.define(:version => 20121129050051) do
     t.string   "image"
   end
 
+  create_table "invitations", :force => true do |t|
+    t.string   "code"
+    t.datetime "expires_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "invitations", ["code"], :name => "index_invitations_on_code", :unique => true
+
   create_table "users", :force => true do |t|
     t.string   "name",                                :null => false
     t.string   "email",                               :null => false
@@ -59,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20121129050051) do
     t.string   "oauth_token"
     t.string   "oauth_expires_at"
     t.boolean  "admin",            :default => false
+    t.integer  "invitation_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
