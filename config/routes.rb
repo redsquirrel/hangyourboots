@@ -7,10 +7,10 @@ Hangyourboots::Application.routes.draw do
   end
 
   # TODO: Create a home page / sign-in page
-  match 'signin', to: 'sessions#new', :as => 'signin', :via => 'get'
+  match 'join', to: 'login#new', :as => 'join', :via => 'post'
 
-  match 'auth/:provider/callback', to: 'sessions#create'
-  match 'auth/failure', to: "houses#index"
+  match 'auth/:provider/callback/', to: 'sessions#create'
+  match 'auth/failure', to: "login#show"
   match 'signout', to: 'sessions#destroy', as: 'signout'
 
   post '/houses/:id/commitments/create' => 'commitments#create'

@@ -6,6 +6,7 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     gender { ['M', 'F'][rand(0..1)] }
     bio { Faker::Lorem.paragraph(sentence_count = 3, supplemental = false) }
+    invitation {FactoryGirl.create(:invitation)}
     after(:create) do |user|
       user.oauth_token = "1234"
       user.oauth_expires_at = "1234",
