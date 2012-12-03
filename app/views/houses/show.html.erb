@@ -1,16 +1,30 @@
 <div class="row">
-  <div class="span5">
+  <div class="span6">
     <h1><%= @house.title %></h1>
     <div id="map_canvas">
       <%= render 'google_map_directions' %>
     </div>
-    <p><%= link_to "Google Maps Link", @house.maps_link %></p>
 
-    <% @house.assets.each do |asset| %>
-   <%= image_tag asset.image_url.to_s %>
-<% end %>
+    <div id="house-carousel" class="carousel slide">
+      <!-- Carousel items -->
+      <div class="carousel-inner">
+        <% @house.assets.each_with_index do |asset, index| %>
+          <div class="item <%if index == 0%>active<%end%>">
+            <%= image_tag asset.image_url.to_s,
+                          :width => "378",
+                          :height => "248" %>
+          </div>
+        <% end %>
+      </div>
+      <!-- Carousel nav -->
+      <a class="carousel-control left" href= "#house-carousel"  data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href= "#house-carousel"  data-slide="next">&rsaquo;</a>
+    </div>
 
-    <h3>About This House</h3>
+  </div>
+
+  <div class="span6">
+    <h2>About This House</h2>
     <p><%= @house.description %></p>
 
     <div class="pull-right price-and-button">
@@ -35,16 +49,16 @@
       <% end %>
     </div>
 
-    <h3>Details:</h3>
+    <h3>Details</h3>
     <div id="houses-show-details">
       <div class="row alt">
-        <div class="span5"><span id="address"><p><%= @house.address %></p></span></div>
+        <div class="span6"><span id="address"><p><%= @house.address %></p></span></div>
       </div>
       <div class="row">
         <div class="span2">
           <strong>rooms: </strong><span class="pull-right"><%= @house.rooms %></span>
         </div>
-        <div class="span1">
+        <div class="span2">
           &nbsp;
         </div>
         <div class="span2">
@@ -55,7 +69,7 @@
         <div class="span2">
           <strong>capacity: </strong><span class="pull-right"><%= @house.capacity %></span>
         </div>
-        <div class="span1">
+        <div class="span2">
           &nbsp;
         </div>
         <div class="span2">
@@ -63,33 +77,29 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="span7">
-    <h2>Roommates</h2>
-    <% unless @roommates == nil %>
-    <% @roommates.each do |roommate| %>
+    <h3>Committed Roommates</h3>
+
     <div class="row">
-      <div class="span2">
-        <%= image_tag "http://graph.facebook.com/#{roommate.uid}/picture?type=large",
-                      :width => "150",
-                      :height => "129",
-                      :class => "img-polaroid" %>
-        <br />
-        <strong><%= roommate.name %></strong>
-      </div>
-      <div class="span5">
-        <p class="bubble">
-          <% if roommate.bio == nil %>
-            Hey! Fill in your bio so we can get rid of this boring Lorem Ipsum text here: Tenetur temporibus nostrum. Rem qui reprehenderit incidunt exercitationem nemo sint. Enim in culpa ab sit consequatur pariatur id.
-          <% else %>
-            <%= roommate.bio %>
-          <% end %>
-          </p>
-      </div>
+      <% unless @roommates == nil %>
+      <% @roommates.each_with_index do |roommate, index| %>
+        <div class="span2">
+          <div class="roommate-pics">
+            <%= image_tag "http://graph.facebook.com/#{roommate.uid}/picture?type=large",
+                          :width => "145",
+                          :height => "145",
+                          :class => "roommate-headshot" %>
+          </div>
+        </div>
+        <div class="span2">
+          <div class="roommate-pics">
+            <img alt="Picture?type=large" class="roommate-headshot" height="145" src="http://graph.facebook.com/702180352/picture?type=large" width="145" />
+          </div>
+        </div>
+      <% end %>
+      <% end %>
     </div>
-    <% end %>
-    <% end %>
+
     <div class="row">
       <div class="span7">
         <%= render 'facebook_comments' %>
