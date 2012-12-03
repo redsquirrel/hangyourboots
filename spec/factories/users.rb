@@ -13,7 +13,7 @@ FactoryGirl.define do
       user.provider = "facebook",
       user.save
       user.invitation = FactoryGirl.create(:invitation)
-
+      FactoryGirl.create(:facebook_profile, :user => user)
     end
     factory :admin_user do
       after(:create) do |user|
@@ -23,8 +23,7 @@ FactoryGirl.define do
     end
   end
   factory :facebook_profile do
-    image {"http://www.example.com"}
-    url {"http://www.example.com"}
-    user
+    image {"http://lorempixel.com/50/50/ "}
+    url   {"http://www.example.com"}
   end
 end

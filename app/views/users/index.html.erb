@@ -1,6 +1,6 @@
 <% @users.each do |user| %>
   <br />
-  <%= image_tag user.profile_picture,
+  <%= image_tag user.image,
             :class => 'img-polaroid' %>
   <%= user.name %>
   <% if user.house %>
