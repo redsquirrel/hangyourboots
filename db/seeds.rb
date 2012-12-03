@@ -3,7 +3,7 @@ require 'factory_girl_rails'
 puts 'Creating houses and users in the database...'
 5.times do
   FactoryGirl.create(:house)
-  FactoryGirl.create(:user)
+  FactoryGirl.create(:facebook_profile)
 end
 
 puts 'Creating invitation codes in the database...'

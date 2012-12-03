@@ -13,6 +13,7 @@ FactoryGirl.define do
       user.provider = "facebook",
       user.save
       user.invitation = FactoryGirl.create(:invitation)
+
     end
     factory :admin_user do
       after(:create) do |user|

@@ -35,6 +35,10 @@ class User < ActiveRecord::Base
     admin == true
   end
 
+  def profile_picture
+    self.image ? self.image : "http://lorempixel.com/50/50/"
+  end
+
   private
   def self.valid_code?(code)
     Invitation.valid_code?(code)
