@@ -1,3 +1,10 @@
+/* ======= Navbar ============= */
+
+.navbar-inner .pull-right {
+	margin-top: 10px;
+	a.btn.btn-mini.btn-success { margin-top: -5px; }
+}
+
 /* ======= Houses#index ======= */
 
 body.houses.index .content { margin: 0 -10px;}
@@ -17,7 +24,7 @@ body.houses.index .content { margin: 0 -10px;}
 }
 
 .total-cost { font-family: serif; font-size: 1.6em; font-weight: lighter; }
-div.span4.details { text-align: center; margin-top: 40px;}
+div.span4.details { text-align: center; margin-top: 40px; }
 
 .alt { background-color: #ccc; }
 
