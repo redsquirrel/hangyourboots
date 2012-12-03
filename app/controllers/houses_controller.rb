@@ -45,7 +45,6 @@ class HousesController < ApplicationController
 
   def authorize_user
     unless current_user.is_admin?
-      flash[:alert] = "Unauthorized action"
       redirect_to root_url
     end
   end

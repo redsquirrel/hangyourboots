@@ -1,48 +1,41 @@
 class CommitmentsController < ApplicationController
-respond_to :html
+  respond_to :html
 
   def create
-    if current_user.commitment
+    if current_user.commitment.present?
       flash[:alert] = "You've already committed to a house"
     else
       current_user.build_commitment(:house_id => params[:id])
       if current_user.save
         flash[:notice] = "Successfully joined a house"
+        notify_users!
+        respond_with(current_user.house)
       else
         flash[:alert] = "Unable to join house"
+        render house_path(params[:id])
       end
     end
-    if current_user.house.full?
-      current_user.house.users.each do |user|
-        UserMailer.house_confirmation(user).deliver
-      end
-    end
-    redirect_to house_path
   end
 
   def destroy
-    @commitment = current_commitment
-    if @commitment.house.full?
+    if current_user.house.full?
       flash[:alert] = "Your housing is already planned."
-      redirect_to @commitment.house
+      redirect_to current_user.house
     else
-      @commitment.destroy
+      current_user.commitment.destroy
       flash[:alert] = "You are no longer committed to a house"
       redirect_to houses_path
     end
   end
 
   def update
-    @commitment = current_commitment
-    @commitment.update_attributes(params[:commitment])
-    respond_with(@house)
+    current_user.commitment.update_attributes(params[:commitment])
+    respond_with(current_user.house)
   end
 
 
   private
-
-  def current_commitment
-    Commitment.find(params[:id])
+  def notify_users!
+    UserMailer.house_is_full_email! if current_user.house.full?
   end
-
 end
