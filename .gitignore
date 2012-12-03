@@ -20,3 +20,6 @@ application.yml
 *~
 *.swp
 *.swo
+
+#ignore local images
+public/uploads/asset/image
