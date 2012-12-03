@@ -1,0 +1,11 @@
+<% @users.each do |user| %>
+  <br />
+  <%= image_tag user.image,
+            :class => 'img-polaroid' %>
+  <%= user.name %>
+  <% if user.house %>
+  	House: <%= user.house.title %>
+	  Capacity: <%= user.house.capacity %>
+	  Spots Left: <%= user.house.capacity - user.house.people_committed %>
+  <% end %>
+<% end %>
