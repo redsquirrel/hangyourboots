@@ -30,11 +30,11 @@ ActiveRecord::Schema.define(:version => 20121202223454) do
   add_index "commitments", ["user_id", "house_id"], :name => "index_commitments_on_user_id_and_house_id", :unique => true
 
   create_table "facebook_profiles", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.string   "image"
+    t.integer  "user_id",                                                :null => false
+    t.string   "image",      :default => "http://lorempixel.com/50/50/"
     t.string   "url"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                                             :null => false
+    t.datetime "updated_at",                                             :null => false
   end
 
   add_index "facebook_profiles", ["user_id"], :name => "index_facebook_profiles_on_user_id", :unique => true
@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(:version => 20121202223454) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "bathrooms"
-    t.string   "image"
   end
 
   create_table "invitations", :force => true do |t|
