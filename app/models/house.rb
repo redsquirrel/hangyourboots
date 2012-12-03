@@ -14,6 +14,10 @@ class House < ActiveRecord::Base
     commitments.size == capacity
   end
 
+  def roommates
+    users
+  end
+
   def people_committed
     commitments.size
   end

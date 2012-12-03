@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
   belongs_to :invitation
   has_one :commitment, :dependent => :destroy
   has_one :house, :through => :commitment
-  delegate :image, :url, :to =>:facebook_profile
+  delegate :image, :url, :to => :facebook_profile
+  delegate :roommates, :to => :house
 
   validates_presence_of :name, :email, :gender
   validates_uniqueness_of :email, :case_sensitive => false
@@ -39,7 +40,7 @@ class User < ActiveRecord::Base
   def self.valid_code?(code)
     Invitation.valid_code?(code)
   end
-  
+
   def self.set_invitation_code!(user,invite_code)
     if Invitation.valid_code?(invite_code)
       user.invitation = Invitation.find_by_code(invite_code)

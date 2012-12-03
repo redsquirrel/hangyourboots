@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(:version => 20121202223454) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "bathrooms"
-    t.string   "image"
   end
 
   create_table "invitations", :force => true do |t|
