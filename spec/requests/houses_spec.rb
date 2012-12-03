@@ -55,15 +55,11 @@ describe "Houses" do
     end
 
     it "displays the total cost of the house" do
-      page.should have_content(@house.total_cost)
+      page.should have_content("$")
     end
 
     it "displays the address of the house" do
       page.should have_content(@house.address)
-    end
-
-    it "displays the maps link of the house" do
-      page.should have_content(@house.maps_link)
     end
 
     it "displays the beds of the house" do
