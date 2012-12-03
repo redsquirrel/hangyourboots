@@ -27,7 +27,7 @@ div.span4.details { text-align: center; margin-top: 40px;}
 
 #houses-show-details {
 	padding-left: 20px;
-	.row { width: 380px; }
+	/*.row { width: 380px; }*/
 	.span2 { width: 120px; }
 	.span5 { width: 350px; }
 
@@ -58,34 +58,30 @@ div.fb-comments.fb_iframe_widget {
 		margin: 0 auto;
 	}
 
-.bubble {
-    background-color:  #fff0a0;
-    background-image: -webkit-linear-gradient(top, hsla(0,0%,100%,.5), hsla(0,0%,100%,0));
-    background-image:    -moz-linear-gradient(top, hsla(0,0%,100%,.5), hsla(0,0%,100%,0));
-    background-image:     -ms-linear-gradient(top, hsla(0,0%,100%,.5), hsla(0,0%,100%,0));
-    background-image:      -o-linear-gradient(top, hsla(0,0%,100%,.5), hsla(0,0%,100%,0));
-    background-image:         linear-gradient(top, hsla(0,0%,100%,.5), hsla(0,0%,100%,0));
-    border-radius: 5px;
-    box-shadow: inset 0 1px 1px hsla(0,0%,100%,.5),
-                3px 3px 0 hsla(0,0%,0%,.1);
-    color: #333;
-    display: inline-block;
-    font: 16px/25px sans-serif;
-    padding: 15px 25px;
-    position: relative;
-    text-shadow: 0 1px 1px hsla(0,0%,100%,.5);
-    min-height: 100px;
+.span2 .roommate-pics {
+	height: 145px;
+	width: 145px;
+	overflow: hidden !important;
+	border: 2px solid white;
+	-webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+	margin-bottom: 10px;
 }
-.bubble:after, .bubble:before {
-    border-bottom: 25px solid transparent;
-    border-left: 25px solid  #fff0a0;
-    bottom: -25px;
-    content: '';
-    position: absolute;
-    left: 25px;
+
+img.roommate-headshot {
+	/*position: relative;
+	top: -2px;*/
 }
-.bubble:before {
-    border-left: 32px solid hsla(0,0%,0%,.1);
-    bottom: -28px;
-    left: 22px;
+
+.carousel-inner img {
+	border: 5px solid white;
+	-webkit-box-shadow: 0 5px 3px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 5px 3px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+	/*margin-bottom: 10px;
+	padding: 4px;*/
+
 }
+
+.carousel-control.right { right: 85px; }
