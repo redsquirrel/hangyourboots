@@ -13,7 +13,6 @@ FactoryGirl.define do
 		bathrooms   { rand(1..4) }
 		capacity 		{ rand(1..12) }
 		total_cost 	{ rand(200..15_000) }
-    image { File.open(File.join(Rails.root, '/spec/factories/images/house.jpg')) }
 
 		factory :invalid_house do
 			title 			nil

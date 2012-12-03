@@ -2,8 +2,10 @@
 <% @houses.each_with_index do |house, index| %>
   <div class='row house <%= index % 2 != 0 ? "alt" : "" %>'>
     <div class="span4">
-      <%= image_tag house.image_url.to_s,
-            :class => 'img-polaroid' %>
+      <% if house.assets[0] != nil %>
+        <%= image_tag house.assets[0].image_url.to_s,
+              :class => 'img-polaroid' %>
+      <% end %>
     </div>
     <div class="span4 title">
       <div class="row">
@@ -24,10 +26,13 @@
       </div>
     </div>
     <div class="span4 details">
-      <span class="total-cost"><%= number_to_currency(house.total_cost) %></span>
+      <span class="total-cost">
+        <%= number_to_currency(house.total_cost) %>
+      </span>
       <br />
-      <%= link_to 'Details', house_path(house),
-                             :class => 'btn btn-primary btn-large details' %>
+      <%= link_to 'Details',
+                   house_path(house),
+                   :class => 'btn btn-primary btn-large details' %>
     </div>
   </div>
 <% end %>

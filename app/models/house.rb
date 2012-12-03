@@ -6,9 +6,9 @@ class House < ActiveRecord::Base
   					:rooms, :beds, :bathrooms, :capacity, :total_cost,
             :presence => true
 
-  mount_uploader :image, ImageUploader
   has_many :commitments
   has_many :users, :through => :commitments
+  has_many :assets
 
   def full?
     commitments.size == capacity

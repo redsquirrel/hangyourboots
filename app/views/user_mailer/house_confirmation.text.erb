@@ -1,1 +1,10 @@
-Your house is complete!
+<%= @user.house.title %> is complete!
+
+Here are your roommates:
+<% @user.house.users.each do |user| %>
+<%= user.name unless user == @user %>
+<% end %>
+
+The next step is to coordinate with your roommates and decide who will sign the rental agreement and manage your payments.
+
+<%= link_to 'View House', house_url(@user.house, :host => "localhost:3000") %>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1><%=@user.house.title %> is complete!</h1>
+    <p>
+      Here are your roommates:<br/>
+      <% @user.house.users.each do |user| %>
+        <br/><%= user.name unless user == @user %>
+      <% end %>
+    </p>
+    <p>
+      The next step is to coordinate with your roommates and decide who will sign the rental agreement and manage your payments.
+    </p>
+    <%= link_to 'View House', house_url(@user.house, :host => "localhost:3000") %>
+  </body>
+</html>

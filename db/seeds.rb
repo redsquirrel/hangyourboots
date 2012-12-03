@@ -1,9 +1,15 @@
 require 'factory_girl_rails'
 
 puts 'Creating houses and users in the database...'
-5.times do
+5.times do |house_id|
   FactoryGirl.create(:house)
-  FactoryGirl.create(:facebook_profile)
+  
+  3.times do |index|
+    FactoryGirl.create(:asset, :house_id => house_id+1, :image => File.open(File.join(Rails.root, "/spec/factories/images/house#{index}.jpg")))
+  end
+
+	FactoryGirl.create(:user)
+
 end
 
 puts 'Creating invitation codes in the database...'

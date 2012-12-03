@@ -2,7 +2,7 @@
 
 body.houses.index .content { margin: 0 -10px;}
 
-.row .house { 
+.row .house {
 	margin-bottom: 1em;
 	img { margin: .5em; }
 }
@@ -59,7 +59,7 @@ div.fb-comments.fb_iframe_widget {
 	}
 
 .bubble {
-    background-color:  #fff0a0; 
+    background-color:  #fff0a0;
     background-image: -webkit-linear-gradient(top, hsla(0,0%,100%,.5), hsla(0,0%,100%,0));
     background-image:    -moz-linear-gradient(top, hsla(0,0%,100%,.5), hsla(0,0%,100%,0));
     background-image:     -ms-linear-gradient(top, hsla(0,0%,100%,.5), hsla(0,0%,100%,0));
@@ -78,7 +78,7 @@ div.fb-comments.fb_iframe_widget {
 }
 .bubble:after, .bubble:before {
     border-bottom: 25px solid transparent;
-    border-left: 25px solid  #fff0a0; 
+    border-left: 25px solid  #fff0a0;
     bottom: -25px;
     content: '';
     position: absolute;

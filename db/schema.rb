@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121201002651) do
+ActiveRecord::Schema.define(:version => 20121202223454) do
+
+  create_table "assets", :force => true do |t|
+    t.integer  "house_id",   :null => false
+    t.string   "image"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "commitments", :force => true do |t|
     t.integer  "house_id"
