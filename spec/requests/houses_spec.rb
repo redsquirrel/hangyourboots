@@ -50,6 +50,8 @@ describe "Houses" do
       page.should have_content(@house.title)
     end
 
+    it "displays the cohort it is a part of"
+
     it "displays the description of the house" do
       page.should have_content(@house.description)
     end

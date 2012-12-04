@@ -13,6 +13,9 @@ FactoryGirl.define do
 		bathrooms   { rand(1..4) }
 		capacity 		{ rand(1..12) }
 		total_cost 	{ rand(200..15_000) }
+		after(:create) do |house|
+			house.invitation = FactoryGirl.create(:invitation)
+		end
 
 		factory :invalid_house do
 			title 			nil
@@ -20,4 +23,3 @@ FactoryGirl.define do
 		end
 	end
 end
-

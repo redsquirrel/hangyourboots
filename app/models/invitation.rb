@@ -2,6 +2,7 @@ class Invitation < ActiveRecord::Base
 	attr_accessible :code, :expires_at
 
 	has_many :users
+	has_many :houses
 
 	def self.valid_code?(code)
 		invite = find_by_code(code)

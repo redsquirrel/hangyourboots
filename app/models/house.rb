@@ -6,6 +6,8 @@ class House < ActiveRecord::Base
   					:rooms, :beds, :bathrooms, :capacity, :total_cost,
             :presence => true
 
+  belongs_to :invitation
+  belongs_to :cohort, :class_name => :invitation
   has_many :commitments
   has_many :users, :through => :commitments
   has_many :assets

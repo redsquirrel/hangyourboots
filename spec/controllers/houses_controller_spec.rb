@@ -9,7 +9,7 @@ describe HousesController do
       assigns(:houses).should eq [house]
     end
     describe 'GET #index' do
-      it "gets all the houses in the database" do
+      it "gets all the houses in the current user's cohort" do
         house = FactoryGirl.create(:house)
         get :index
         assigns(:houses).should eq [house]

@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_one :facebook_profile
   belongs_to :invitation
+  belongs_to :cohort, :class_name => :invitation
   has_one :commitment, :dependent => :destroy
   has_one :house, :through => :commitment
   delegate :image, :url, :to => :facebook_profile

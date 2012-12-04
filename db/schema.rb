@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202223454) do
+ActiveRecord::Schema.define(:version => 20121204194222) do
 
   create_table "assets", :force => true do |t|
     t.integer  "house_id",   :null => false
@@ -41,23 +41,27 @@ ActiveRecord::Schema.define(:version => 20121202223454) do
 
   create_table "houses", :force => true do |t|
     t.string   "title"
-    t.string   "address",     :null => false
+    t.string   "address",       :null => false
     t.text     "description"
     t.string   "maps_link"
     t.integer  "rooms"
     t.integer  "beds"
     t.integer  "capacity"
-    t.integer  "total_cost",  :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "total_cost",    :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "bathrooms"
+    t.integer  "invitation_id"
   end
+
+  add_index "houses", ["invitation_id"], :name => "index_houses_on_invitation_id"
 
   create_table "invitations", :force => true do |t|
     t.string   "code"
     t.datetime "expires_at"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+    t.string   "cohort",     :default => "Please add a cohort", :null => false
   end
 
   add_index "invitations", ["code"], :name => "index_invitations_on_code", :unique => true
@@ -78,5 +82,6 @@ ActiveRecord::Schema.define(:version => 20121202223454) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["invitation_id"], :name => "index_users_on_invitation_id"
 
 end
