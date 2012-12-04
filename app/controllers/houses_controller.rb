@@ -15,6 +15,7 @@ class HousesController < ApplicationController
 
 	def new
 		@house = House.new
+    5.times { @house.assets.build }
 	end
 
 	def edit

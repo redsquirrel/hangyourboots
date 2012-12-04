@@ -36,8 +36,19 @@
     <%= f.label :total_cost %><br />
     <%= f.number_field :total_cost %>
   </p>
-  <p>
-    <%= f.file_field :image %>
-  </p>
+  <%= f.fields_for :assets do |asset_fields| %>
+    <% if asset_fields.object.new_record? %>
+      <%= asset_fields.file_field :image %>
+    <% end %>
+  <% end %>
+
+  <%= f.fields_for :assets do |asset_fields| %>
+    <% unless asset_fields.object.new_record? %>
+      <br><br>
+      <%= link_to image_tag(asset_fields.object.image.url(:thumb)), asset_fields.object.image.url(:thumb) %>
+      Destroy: <%= asset_fields.check_box :_destroy %>
+    <% end %>
+  <% end %> 
+
   <p><%= f.submit %></p>
 <% end %>
