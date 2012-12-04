@@ -36,7 +36,7 @@ class HousesController < ApplicationController
 
 	def destroy
     @house = current_house
-    @house.users.each { |user| UserMailer.house_deletion(user) }
+    @house.users.each { |user| UserMailer.house_deletion(user).deliver }
     @house.commitments.each { |com| com.destroy }
 		@house.destroy
 
