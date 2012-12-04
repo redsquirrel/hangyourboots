@@ -78,22 +78,25 @@
       </div>
     </div>
 
+    <% if @roommates.first != nil %>
     <h3>Committed Roommates</h3>
-
+    <p>click a picture to see their facebook profile</p>
+    <% end %>
     <div class="row">
       <% unless @roommates == nil %>
       <% @roommates.each_with_index do |roommate, index| %>
         <div class="span2">
           <div class="roommate-pics">
-            <%= image_tag "http://graph.facebook.com/#{roommate.uid}/picture?type=large",
-                          :width => "145",
-                          :height => "145",
-                          :class => "roommate-headshot" %>
-          </div>
-        </div>
-        <div class="span2">
-          <div class="roommate-pics">
-            <img alt="Picture?type=large" class="roommate-headshot" height="145" src="http://graph.facebook.com/702180352/picture?type=large" width="145" />
+            <a href="http://facebook.com/<%=roommate.uid%>" class="roommate-popover"
+                        rel="popover"
+                        data-placement="top"
+                        data-content="<%= roommate.name%>"
+                        data-original-title="Get To Know Me On Facebook">
+                          <%= image_tag "http://graph.facebook.com/#{roommate.uid}/picture?type=large",
+                                        :width => "145",
+                                        :height => "145",
+                                        :class => "roommate-headshot" %>
+            </a>
           </div>
         </div>
       <% end %>
@@ -101,7 +104,7 @@
     </div>
 
     <div class="row">
-      <div class="span7">
+      <div class="span6">
         <%= render 'facebook_comments' %>
       </div>
     </div>
