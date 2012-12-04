@@ -11,4 +11,9 @@ class UserMailer < ActionMailer::Base
     email_with_name = "#{user.name} <#{user.email}>"
     mail(:to => email_with_name, :subject => "Your house is complete!")
   end
+
+  def house_deletion(user)
+    email_with_name = "#{user.name} <#{user.email}>"
+    mail(:to => email_with_name, :subject => "Your house has been deleted.")
+  end
 end
