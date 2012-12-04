@@ -23,7 +23,7 @@ FactoryGirl.define do
     end
   end
   factory :facebook_profile do
-    image {"http://lorempixel.com/50/50/ "}
+    image {"http://lorempixel.com/50/50/"}
     url   {"http://www.example.com"}
   end
 end
