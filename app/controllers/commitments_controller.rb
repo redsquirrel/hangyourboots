@@ -40,6 +40,8 @@ class CommitmentsController < ApplicationController
       current_user.roommates.each do |user|
         UserMailer.house_confirmation(user).deliver
       end
+    else
+      UserMailer.join_confirmation(current_user).deliver
     end
   end
 end
