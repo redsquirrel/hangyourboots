@@ -65,7 +65,7 @@ div.fb-comments.fb_iframe_widget {
 		margin: 0 auto;
 	}
 
-.span2 .roommate-pics {
+.roommate-pics {
 	height: 145px;
 	width: 145px;
 	overflow: hidden !important;
@@ -92,3 +92,7 @@ img.roommate-headshot {
 }
 
 .carousel-control.right { right: 85px; }
+
+/* ====== Users#index ============= */
+
+body.users.index .row .well { margin-left: 5px; }

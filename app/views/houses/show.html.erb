@@ -87,15 +87,16 @@
       <% @roommates.each_with_index do |roommate, index| %>
         <div class="span2">
           <div class="roommate-pics">
-            <a href="http://facebook.com/<%=roommate.uid%>" class="roommate-popover"
-                        rel="popover"
-                        data-placement="top"
-                        data-content="<%= roommate.name%>"
-                        data-original-title="Get To Know Me On Facebook">
-                          <%= image_tag "http://graph.facebook.com/#{roommate.uid}/picture?type=large",
-                                        :width => "145",
-                                        :height => "145",
-                                        :class => "roommate-headshot" %>
+            <a href="http://facebook.com/<%=roommate.uid%>"
+               class="roommate-popover"
+               rel="popover"
+               data-placement="top"
+               data-content="<%= roommate.name%>"
+               data-original-title="Get To Know Me On Facebook">
+                <%= image_tag "http://graph.facebook.com/#{roommate.uid}/picture?type=large",
+                  :width => "145",
+                  :height => "145",
+                  :class => "roommate-headshot" %>
             </a>
           </div>
         </div>

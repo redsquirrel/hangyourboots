@@ -1,5 +1,10 @@
 <%= link_to "Home", houses_path, :class => 'brand' %>
 
+<ul class="nav">
+  <li><%= link_to "Hacker Houses", houses_path %></li>
+  <li><%= link_to "Potential Roommates", users_path %></li>
+</ul>
+
 <div class="pull-right">
   <% if current_user %>
     Signed in as <strong><%= current_user.name %></strong>!
@@ -14,4 +19,3 @@
                 :class => "btn btn-mini btn-success" %>
   <% end %>
 </div>
-
