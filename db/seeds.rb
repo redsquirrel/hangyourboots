@@ -1,5 +1,10 @@
 require 'factory_girl_rails'
 
+puts 'Creating invitation code "goodcode" in the database...'
+invitation1 = FactoryGirl.create(:invitation, :code => "goodcode", :cohort => "Fall 2012")
+invitation2 = FactoryGirl.create(:invitation, :code => "anothergoodcode", :cohort => "Winter 2013")
+
+puts 'Creating users...'
 puts 'Creating houses and users in the database...'
   house = House.create(:title => "Archstone 2-BR",
                :address => "One Saint Francis Pl., San Francisco, CA 94107",
@@ -9,6 +14,7 @@ puts 'Creating houses and users in the database...'
                :beds => 3,
                :capacity => 6,
                :total_cost => 6450,
+               :invitation => invitation1,
                :bathrooms => 2)
   Asset.create(:house_id => house.id, :image => File.open(File.join(Rails.root, "/app/assets/images/archstone.png")))
   Asset.create(:house_id => house.id, :image => File.open(File.join(Rails.root, "/app/assets/images/archstone2.png")))
@@ -22,6 +28,7 @@ puts 'Creating houses and users in the database...'
                :beds => 2,
                :capacity => 4,
                :total_cost => 5250,
+               :invitation => invitation1,
                :bathrooms => 1)
   Asset.create(:house_id => house.id, :image => File.open(File.join(Rails.root, "/app/assets/images/archstone.png")))
   Asset.create(:house_id => house.id, :image => File.open(File.join(Rails.root, "/app/assets/images/archstone2.png")))
@@ -35,6 +42,7 @@ puts 'Creating houses and users in the database...'
                :beds => 2,
                :capacity => 4,
                :total_cost => 5250,
+               :invitation => invitation1,
                :bathrooms => 1)
   Asset.create(:house_id => house.id, :image => File.open(File.join(Rails.root, "/app/assets/images/archstone.png")))
   Asset.create(:house_id => house.id, :image => File.open(File.join(Rails.root, "/app/assets/images/archstone2.png")))
@@ -48,6 +56,7 @@ puts 'Creating houses and users in the database...'
                :beds => 3,
                :capacity => 6,
                :total_cost => 4499,
+               :invitation => invitation2,
                :bathrooms => 2)
   Asset.create(:house_id => house.id, :image => File.open(File.join(Rails.root, "/app/assets/images/trinity.png")))
   Asset.create(:house_id => house.id, :image => File.open(File.join(Rails.root, "/app/assets/images/trinity2.png")))
@@ -61,6 +70,7 @@ puts 'Creating houses and users in the database...'
                :beds => 2,
                :capacity => 4,
                :total_cost => 2899,
+               :invitation => invitation2,
                :bathrooms => 1)
   Asset.create(:house_id => house.id, :image => File.open(File.join(Rails.root, "/app/assets/images/trinity.png")))
   Asset.create(:house_id => house.id, :image => File.open(File.join(Rails.root, "/app/assets/images/trinity2.png")))
@@ -68,9 +78,5 @@ puts 'Creating houses and users in the database...'
 
 puts 'Creating users...'
 5.times do
-  FactoryGirl.create(:user)
+  FactoryGirl.create(:user,:invitation => Invitation.find([1,2].sample))
 end
-
-puts 'Creating invitation codes in the database...'
-FactoryGirl.create(:invitation, :code => "goodcode")
-FactoryGirl.create(:invalid_invitation, :code => "badcode")

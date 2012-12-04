@@ -14,7 +14,7 @@ FactoryGirl.define do
 		capacity 		{ rand(1..12) }
 		total_cost 	{ rand(200..15_000) }
 		after(:create) do |house|
-			house.invitation = FactoryGirl.create(:invitation)
+			house.invitation = FactoryGirl.create(:invitation) unless house.invitation_id.present?
 		end
 
 		factory :invalid_house do

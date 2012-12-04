@@ -1,5 +1,5 @@
 class Invitation < ActiveRecord::Base
-	attr_accessible :code, :expires_at
+	attr_accessible :code, :expires_at, :cohort
 
 	has_many :users
 	has_many :houses

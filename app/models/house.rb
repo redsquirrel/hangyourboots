@@ -1,6 +1,6 @@
 class House < ActiveRecord::Base
   attr_accessible :title, :address, :description, :maps_link, :rooms,
-  								:beds, :bathrooms, :capacity, :total_cost, :assets_attributes
+  								:beds, :bathrooms, :capacity, :total_cost, :assets_attributes, :invitation
 
   validates :title, :address, :description, :maps_link,
   					:rooms, :beds, :bathrooms, :capacity, :total_cost,

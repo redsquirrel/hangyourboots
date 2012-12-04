@@ -12,7 +12,6 @@ FactoryGirl.define do
       user.uid = "1234",
       user.provider = "facebook",
       user.save
-      user.invitation = FactoryGirl.create(:invitation)
       FactoryGirl.create(:facebook_profile, :user => user)
     end
     factory :admin_user do
