@@ -20,6 +20,7 @@ class HousesController < ApplicationController
 
 	def edit
     @house = current_house
+    @house.assets.build
 	end
 
 	def show
