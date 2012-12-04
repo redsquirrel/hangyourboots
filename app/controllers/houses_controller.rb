@@ -36,8 +36,11 @@ class HousesController < ApplicationController
 
 	def destroy
     @house = current_house
+    @house.users.each { |user| UserMailer.house_deletion(user).deliver }
+    @house.commitments.each { |com| com.destroy }
 		@house.destroy
-		redirect_to 'index'
+
+		redirect_to houses_path
 	end
 
   private
