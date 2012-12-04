@@ -28,12 +28,18 @@ class User < ActiveRecord::Base
 
         user.build_facebook_profile :image => auth["info"]["image"], :url => auth["info"]["urls"]["Facebook"]
         set_invitation_code!(user,invite_code)
+        user.change_image_size
       end
     end
   end
 
   def is_admin?
     admin == true
+  end
+
+  def change_image_size
+    self.image.sub("type=square", "type=large")
+    self.save
   end
 
   private
@@ -46,4 +52,6 @@ class User < ActiveRecord::Base
       user.invitation = Invitation.find_by_code(invite_code)
     end
   end
+
+  
 end
