@@ -7,5 +7,7 @@
   	House: <%= user.house.title %>
 	  Capacity: <%= user.house.capacity %>
 	  Spots Left: <%= user.house.capacity - user.house.people_committed %>
+	<% else %>
+	  Not committed to a house
   <% end %>
 <% end %>
