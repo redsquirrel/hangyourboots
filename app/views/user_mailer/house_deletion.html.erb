@@ -4,7 +4,7 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1><%=@user.house.title %> has been deleted.</h1>
+    <h1><%= @user.house.title %> has been deleted.</h1>
     <p>
       <%= @user.house.title %>, to which you committed has been deleted. It usually happen because not enough people committed to that house or it became unavalaible.
     </p>
@@ -14,6 +14,6 @@
     <p>
       Sorry for the inconvenience...
     </p>
-    <%= link_to 'Pick a new house', root_path, :host => "localhost:3000") %>
+    <%= link_to 'Pick a new house', root_path, :host => "localhost:3000" %>
   </body>
 </html>
