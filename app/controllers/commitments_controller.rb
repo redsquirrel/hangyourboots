@@ -36,6 +36,6 @@ class CommitmentsController < ApplicationController
 
   private
   def notify_users!
-    UserMailer.house_is_full_email! if current_user.house.full?
+    UserMailer.house_is_full_email!(current_user.roommates) if current_user.house.full?
   end
 end
