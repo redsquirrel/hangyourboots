@@ -1,7 +1,7 @@
 <%= @user.house.title %> is complete!
 
 Here are your roommates:
-<% @user.house.users.each do |user| %>
+<% @user.roommates.each do |user| %>
 <%= user.name unless user == @user %>
 <% end %>
 
