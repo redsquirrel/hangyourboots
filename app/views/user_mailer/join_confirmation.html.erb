@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>You have joined <%=@user.house.title %>.</h1>
+    <p>
+      Here are your roommates so far:<br/>
+      <% @user.roommates.each do |user| %>
+        <br/><%= user.name unless user == @user %>
+      <% end %>
+    </p>
+    <p>
+      If you wish to leave this house, you can do so by clicking the "Leave House" button on the house page.  You may not join another house until you have left this house.
+    </p>
+    <p>
+      Once your house is filled, you will all be committed to this house and you will no longer be allowed to switch to a different house.
+    </p>
+    <%= link_to 'View House', house_url(@user.house, :host => "localhost:3000") %>
+  </body>
+</html>
