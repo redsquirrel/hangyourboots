@@ -1,7 +1,7 @@
 class HousesController < ApplicationController
 
 	respond_to :html
-  before_filter :authorize_user, :except => [:show, :index]
+  before_filter :authorize_user, :except => [:show, :index, :new, :create]
   before_filter :sign_in
 
   def index
@@ -9,7 +9,9 @@ class HousesController < ApplicationController
   end
 
   def create
-    @house = House.create(params[:house])
+    @house = House.new(params[:house])
+    @house.user_id = current_user.id
+    @house.save
     respond_with(@house)
   end
 
@@ -49,7 +51,7 @@ class HousesController < ApplicationController
   end
 
   def authorize_user
-    unless current_user.is_admin?
+    unless current_user.is_admin? || current_house.user_id == current_user.id
       redirect_to root_url
     end
   end
