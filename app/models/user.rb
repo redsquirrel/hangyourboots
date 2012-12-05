@@ -47,9 +47,9 @@ class User < ActiveRecord::Base
     Invitation.valid_code?(code)
   end
 
-  def self.set_invitation_code!(user,invite_code)
+  def self.set_cohort!(user,invite_code)
     if Invitation.valid_code?(invite_code)
-      user.cohort = Invitation.find_by_code(invite_code).first.cohort
+      user.cohort = Invitation.find_by_code(invite_code).cohort
     end
   end
 

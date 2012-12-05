@@ -13,6 +13,10 @@ class House < ActiveRecord::Base
 
   accepts_nested_attributes_for :assets, :allow_destroy => true
   
+  def self.for_user_cohort(user)
+    find_all_by_cohort_id(user.cohort_id)
+  end
+
   def full?
     commitments.size == capacity
   end
