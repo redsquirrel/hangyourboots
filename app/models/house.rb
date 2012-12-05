@@ -1,12 +1,19 @@
+require 'distance'
+
 class House < ActiveRecord::Base
+  before_create :calculate_distance_and_duration
+
   attr_accessible :title, :address, :description, :maps_link, :rooms,
-  								:beds, :bathrooms, :capacity, :total_cost, :assets_attributes, :cohort
+  								:beds, :bathrooms, :capacity, :total_cost, :assets_attributes, :cohort,
+                  :distance, :duration
 
   validates :title, :address, :description, :maps_link,
   					:rooms, :beds, :bathrooms, :capacity, :total_cost,
             :presence => true
 
   belongs_to :cohort
+  belongs_to :user
+
   has_many :commitments
   has_many :users, :through => :commitments
   has_many :assets
@@ -27,5 +34,15 @@ class House < ActiveRecord::Base
 
   def people_committed
     commitments.size
+  end
+
+  private
+  def calculate_distance_and_duration
+    begin
+      self.distance = Distance.calculate(self.address)[:distance]
+      self.duration = Distance.calculate(self.address)[:duration]
+    rescue
+      "no data"
+    end
   end
 end

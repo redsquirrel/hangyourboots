@@ -27,7 +27,6 @@ describe "Houses" do
         all('span.total-cost').each do |span|
           span.should have_content("$")
         end
-      end
 
       it "a user should be able to see more detail about a house" do
         within('.houses .house:first') {
@@ -45,9 +44,29 @@ describe "Houses" do
       end
     end
 
+    it "displays the distance" do
+      page.should have_content(House.first.distance)
+    end
+
+    it "displays the duration of walk" do
+      page.should have_content(House.first.duration)
+    end
+
+    it "a user should be able to see more detail about a house" do
+      within('.houses .house:first') {
+        click_on('Details')
+      }
+      page.should have_content(House.first.description)
+    end
+
+    it "has a button to add a house" do
+      page.should have_content("Add a house")
+    end
+  end
+
   describe "Show page" do
     before do
-      @house = create(:house, :rooms => 3, :beds => 4, :bathrooms => 2, :capacity => 1)
+      @house = create(:house, :rooms => 3, :beds => 4, :bathrooms => 2, :capacity => 1, :cohort => @user.cohort)
       com = Commitment.new(:house_id => @house.id)
       com.user_id = @user.id
       com.save
@@ -88,6 +107,32 @@ describe "Houses" do
 
     it "does not display the leave button if house is full" do
       page.should_not have_button("Leave House")
+    end
+
+    context "if user is admin" do
+      it "has a delete button" do
+        @user.admin = true
+        @user.save
+        visit house_path(@house)
+
+        page.should have_link("Delete House")
+      end
+    end
+
+    context "if user owns the house" do
+      it "has a delete button" do
+        @house.user_id = @user.id
+        @house.save
+        visit house_path(@house)
+
+        page.should have_link("Delete House")
+      end
+    end
+
+    context "if user is not an admin and did not create the house" do
+      it "has no delete button" do
+        page.should_not have_link("Delete House")
+      end
     end
   end
 end

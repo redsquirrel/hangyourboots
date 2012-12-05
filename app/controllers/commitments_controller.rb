@@ -36,6 +36,12 @@ class CommitmentsController < ApplicationController
 
   private
   def notify_users!
-    UserMailer.house_is_full_email!(current_user.roommates) if current_user.house.full?
+    if current_user.house.full?
+      current_user.roommates.each do |user|
+        UserMailer.house_confirmation(user).deliver
+      end
+    else
+      UserMailer.join_confirmation(current_user).deliver
+    end
   end
 end

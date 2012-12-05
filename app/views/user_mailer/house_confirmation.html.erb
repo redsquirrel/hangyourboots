@@ -7,7 +7,7 @@
     <h1><%=@user.house.title %> is complete!</h1>
     <p>
       Here are your roommates:<br/>
-      <% @user.house.users.each do |user| %>
+      <% @user.roommates.each do |user| %>
         <br/><%= user.name unless user == @user %>
       <% end %>
     </p>

@@ -1,0 +1,11 @@
+You have joined <%=@user.house.title %>.
+
+Here are your roommates so far:
+<% @user.roommates.each do |user| %>
+  <%= user.name unless user == @user %>
+<% end %>
+If you wish to leave this house, you can do so by clicking the "Leave House" button on the house page.  You may not join another house until you have left this house.
+
+Once your house is filled, you will all be committed to this house and you will no longer be allowed to switch to a different house.
+
+<%= link_to 'View House', house_url(@user.house, :host => "localhost:3000") %>
