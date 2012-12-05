@@ -16,7 +16,7 @@ describe "Houses" do
       visit houses_path
     end
 
-    context "houses with the same cohort as current user"
+    context "houses with the same cohort as current user" do
       it "displays the title of each house" do
         House.find_all_by_cohort_id(@user.cohort_id).each do |house|
           page.should have_content(house.title)
@@ -27,6 +27,7 @@ describe "Houses" do
         all('span.total-cost').each do |span|
           span.should have_content("$")
         end
+      end
 
       it "a user should be able to see more detail about a house" do
         within('.houses .house:first') {
