@@ -16,7 +16,6 @@ describe "Houses" do
       visit houses_path
     end
 
-
     it "displays the title of each house" do
       House.all.each do |house|
         page.should have_content(house.title)
@@ -27,6 +26,14 @@ describe "Houses" do
       all('span.total-cost').each do |span|
         span.should have_content("$")
       end
+    end
+
+    it "displays the distance" do
+      page.should have_content(House.first.distance)
+    end
+
+    it "displays the duration of walk" do
+      page.should have_content(House.first.duration)
     end
 
     it "a user should be able to see more detail about a house" do

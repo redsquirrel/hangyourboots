@@ -25,4 +25,20 @@ class House < ActiveRecord::Base
     commitments.size
   end
 
+  def distance
+    begin
+      Distance.calculate(self.address)[:distance]
+    rescue
+      "no data"
+    end
+  end
+
+  def duration
+    begin
+      Distance.calculate(self.address)[:duration]
+    rescue
+      "no data"
+    end
+  end
+
 end
