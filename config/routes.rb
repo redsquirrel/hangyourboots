@@ -7,6 +7,7 @@ Hangyourboots::Application.routes.draw do
   end
 
   resources :invitations
+  resources :cohorts
 
   # TODO: Create a home page / sign-in page
   match 'join', to: 'login#new', :as => 'join', :via => 'post'
