@@ -4,13 +4,13 @@ describe HousesController do
 
   shared_examples("member access to houses") do
     it "gets all the houses in the database" do
-      house = FactoryGirl.create(:house)
+      house = FactoryGirl.create(:house, :cohort_id => 1)
       get :index
       assigns(:houses).should eq [house]
     end
     describe 'GET #index' do
       it "gets all the houses in the current user's cohort" do
-        house = FactoryGirl.create(:house)
+        house = FactoryGirl.create(:house, :cohort_id => 1)
         get :index
         assigns(:houses).should eq [house]
       end
@@ -18,7 +18,7 @@ describe HousesController do
 
     describe "GET #show" do
       it "assigns the requested house to @house" do
-        house = FactoryGirl.create(:house)
+        house = FactoryGirl.create(:house, :cohort_id => 1)
         get :show, id: house
         assigns(:house).should eq house
       end
@@ -28,7 +28,7 @@ describe HousesController do
   shared_examples("unauthorized access to houses") do
     describe "#edit" do
       before do
-        house = FactoryGirl.create(:house)
+        house = FactoryGirl.create(:house, :cohort_id => 1)
         get :edit, id: house.id
       end
       it { should redirect_to root_url }
@@ -36,7 +36,7 @@ describe HousesController do
 
     describe "#update" do
       before do
-        house = FactoryGirl.create(:house)
+        house = FactoryGirl.create(:house, :cohort_id => 1)
         put :update, id: house.id, house: FactoryGirl.attributes_for(:house)
       end
       it { should redirect_to root_url }
@@ -44,7 +44,7 @@ describe HousesController do
 
     describe "#destroy" do
       before do
-        house = FactoryGirl.create(:house)
+        house = FactoryGirl.create(:house, :cohort_id => 1)
         delete :destroy, id: house.id
       end
       it { should redirect_to root_url }
@@ -105,13 +105,13 @@ describe HousesController do
   end
 
   context "admin access to houses" do
-    before(:each) {set_user_session create(:admin_user)}
+    before(:each) {set_user_session create(:admin_user, :cohort_id => 1)}
     it_behaves_like "member access to houses"
     it_behaves_like "admin access to houses"
   end
 
   context "non-admin access to houses" do
-    before(:each) {set_user_session create(:user)}
+    before(:each) {set_user_session create(:user, :cohort_id => 1)}
     it_behaves_like "member access to houses"
     it_behaves_like "unauthorized access to houses"
   end
