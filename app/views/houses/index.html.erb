@@ -1,3 +1,4 @@
+<% require 'distance' %>
 <div class='houses'>
 <% @houses.each_with_index do |house, index| %>
   <div class='row house <%= index % 2 != 0 ? "alt" : "" %>'>
@@ -29,6 +30,12 @@
       <span class="total-cost">
         <%= number_to_currency(house.total_cost) %>
       </span>
+
+      <span class="distance">
+        <%= house.distance %>
+        <%= house.duration %>
+      </span>
+
       <br />
       <%= link_to 'Details',
                    house_path(house),

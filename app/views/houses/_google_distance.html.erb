@@ -1,0 +1,26 @@
+<script type="text/javascript">
+function calculateDistances(address) {
+  var service = new google.maps.DistanceMatrixService();
+  service.getDistanceMatrix(
+    {
+      origins: [address],
+      destinations: ["717 california st, San Francisco, CA 94108"],
+      travelMode: google.maps.TravelMode.WALKING,
+      unitSystem: google.maps.UnitSystem.IMPERIAL,
+      avoidHighways: false,
+      avoidTolls: false
+    }, callback);
+}
+function callback(response, status) {
+  if (status != google.maps.DistanceMatrixStatus.OK) {
+    alert('Error was: ' + status);
+  } else {
+    var origins = response.originAddresses;
+    var destinations = response.destinationAddresses;
+    var outputDiv = document.getElementById('distance');
+    outputDiv.innerHTML = '';
+  }
+}
+
+calculateDistances("One st Francis pl, San Francisco");
+</script>
