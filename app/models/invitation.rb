@@ -4,11 +4,14 @@ class Invitation < ActiveRecord::Base
 	has_many :users
 
 	def self.valid_code?(code)
-		invite = find_by_code(code)
-		invite && !invite.try(:expired?)
+		self.find_by_code(code).try(:active?)
 	end
 
 	def expired?
 		Time.now >= expires_at
 	end
+
+  def active?
+    Time.now < expires_at
+  end
 end
