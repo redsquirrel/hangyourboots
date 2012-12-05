@@ -11,11 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204201229) do
+ActiveRecord::Schema.define(:version => 20121205011020) do
 
   create_table "assets", :force => true do |t|
     t.integer  "house_id",   :null => false
     t.string   "image"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "cohorts", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -41,27 +47,25 @@ ActiveRecord::Schema.define(:version => 20121204201229) do
 
   create_table "houses", :force => true do |t|
     t.string   "title"
-    t.string   "address",       :null => false
+    t.string   "address",     :null => false
     t.text     "description"
     t.string   "maps_link"
     t.integer  "rooms"
     t.integer  "beds"
     t.integer  "capacity"
-    t.integer  "total_cost",    :null => false
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.integer  "total_cost",  :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "bathrooms"
-    t.integer  "invitation_id"
+    t.integer  "cohort_id"
   end
-
-  add_index "houses", ["invitation_id"], :name => "index_houses_on_invitation_id"
 
   create_table "invitations", :force => true do |t|
     t.string   "code"
     t.datetime "expires_at"
-    t.datetime "created_at",                                    :null => false
-    t.datetime "updated_at",                                    :null => false
-    t.string   "cohort",     :default => "Please add a cohort", :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "cohort_id"
   end
 
   add_index "invitations", ["code"], :name => "index_invitations_on_code", :unique => true
@@ -78,10 +82,9 @@ ActiveRecord::Schema.define(:version => 20121204201229) do
     t.string   "oauth_token"
     t.string   "oauth_expires_at"
     t.boolean  "admin",            :default => false
-    t.integer  "invitation_id"
+    t.integer  "cohort_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["invitation_id"], :name => "index_users_on_invitation_id"
 
 end
