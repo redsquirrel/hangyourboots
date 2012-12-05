@@ -51,7 +51,7 @@ class HousesController < ApplicationController
   end
 
   def authorize_user
-    unless current_user.is_admin?
+    unless current_user.is_admin? || current_house.user_id == current_user.id
       redirect_to root_url
     end
   end

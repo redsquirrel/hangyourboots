@@ -26,29 +26,24 @@ describe HousesController do
   end
 
   shared_examples("unauthorized access to houses") do
-    describe "#create" do 
-      before {post :create, house: FactoryGirl.attributes_for(:house)}
-      it { should redirect_to root_url }
-    end
-
-    describe "#edit" do 
-      before do 
+    describe "#edit" do
+      before do
         house = FactoryGirl.create(:house)
         get :edit, id: house.id
       end
       it { should redirect_to root_url }
     end
-    
-    describe "#update" do 
-      before do 
+
+    describe "#update" do
+      before do
         house = FactoryGirl.create(:house)
         put :update, id: house.id, house: FactoryGirl.attributes_for(:house)
       end
       it { should redirect_to root_url }
     end
-    
-    describe "#destroy" do 
-      before do 
+
+    describe "#destroy" do
+      before do
         house = FactoryGirl.create(:house)
         delete :destroy, id: house.id
       end
