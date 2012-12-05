@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :houses
   has_one :facebook_profile
-  belongs_to :invitation
+  belongs_to :cohort
   has_one :commitment, :dependent => :destroy
   has_one :house, :through => :commitment
   delegate :image, :url, :to => :facebook_profile
@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
         user.gender = auth["extra"]["raw_info"]["gender"]
 
         user.build_facebook_profile :image => auth["info"]["image"], :url => auth["info"]["urls"]["Facebook"]
-        set_invitation_code!(user,invite_code)
+        set_cohort!(user,invite_code)
         user.change_image_size
       end
     end
@@ -48,9 +48,9 @@ class User < ActiveRecord::Base
     Invitation.valid_code?(code)
   end
 
-  def self.set_invitation_code!(user,invite_code)
+  def self.set_cohort!(user,invite_code)
     if Invitation.valid_code?(invite_code)
-      user.invitation = Invitation.find_by_code(invite_code)
+      user.cohort = Invitation.find_by_code(invite_code).cohort
     end
   end
 

@@ -7,6 +7,7 @@ Hangyourboots::Application.routes.draw do
   end
 
   resources :invitations
+  resources :cohorts
 
   get 'auth/facebook', :as => 'login'
 

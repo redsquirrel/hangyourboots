@@ -5,7 +5,7 @@ class HousesController < ApplicationController
   before_filter :sign_in
 
   def index
-    @houses = House.all
+    @houses = House.for_user_cohort(current_user)
   end
 
   def create

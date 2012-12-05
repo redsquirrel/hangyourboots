@@ -1,0 +1,19 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <td><%= @cohort.name %></td>
+    <td><%= link_to 'Edit', edit_cohort_path(@cohort) %></td>
+    <td><%= link_to 'Destroy', @cohort, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+</table>
+
+<div>
+<%= link_to "New invitation", new_invitation_path %>
+</div>
+<div>
+<%= link_to "Back", cohorts_path %>
+</div>
