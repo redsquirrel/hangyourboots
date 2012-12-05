@@ -16,7 +16,7 @@
 <% @invitations.each do |i| %>
   <tr>
     <td><%= i.code %></td>
-    <td><%= i.cohort %></td>
+    <td><%= i.cohort.name %></td>
     <td><%= i.expires_at.strftime("%b %d %Y") %></td>
     <td><%= link_to 'Show', invitation_path(i) %></td>
     <td><%= link_to 'Edit', edit_invitation_path(i) %></td>

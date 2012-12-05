@@ -2,7 +2,7 @@
     <%= f.label :code, "Invitation code" %>
     <%= f.text_field :code %>
     <%= f.label :cohort, "Cohort" %>
-    <%= select(:invitation, :cohort, cohort_options) %>
+    <%= select(:invitation, :cohort_id, cohort_options) %>
     <%= f.label :expires_at, "Expiration date" %>
     <%= date_select "invitation", "expires_at" %>
   <%= f.submit "Submit" %>

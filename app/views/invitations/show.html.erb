@@ -1,4 +1,4 @@
-<table class="pretty">
+<table>
   <tr>
     <th>Code</th>
     <th>Expiration date</th>
@@ -9,7 +9,7 @@
   <tr>
     <td><%= @invitation.code %></td>
     <td><%= @invitation.expires_at.strftime("%b %d %Y") %></td>
-    <td><%= @invitation.cohort %></td>
+    <td><%= @invitation.cohort.name %></td>
     <td><%= link_to 'Edit', edit_invitation_path(@invitation) %></td>
     <td><%= link_to 'Destroy', @invitation, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
