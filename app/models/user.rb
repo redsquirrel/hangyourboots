@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.for_user_cohort(user)
+    find_all_by_cohort_id(user.cohort_id)
+  end
+
   def is_admin?
     admin == true
   end
