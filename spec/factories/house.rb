@@ -14,7 +14,7 @@ FactoryGirl.define do
 		capacity 		{ rand(1..12) }
 		total_cost 	{ rand(200..15_000) }
 		after(:create) do |house|
-			house.cohort = create(:cohort)
+			house.cohort = create(:cohort) unless house.cohort.present?
 			house.save
 		end
 
