@@ -23,6 +23,12 @@ describe "Users" do
 	      end
       end
 
+      it "does not show users not in the current user's cohort" do
+        visit users_path
+        other_user = create(:user)
+        page.should_not have_content(other_user.name)
+      end
+
       it 'displays the user pictures' do
       	visit users_path
       	@users.each do |user|
