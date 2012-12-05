@@ -1,9 +1,13 @@
-<div>
-	<h2>Join with Facebook</h2>
-	<%= form_tag(:action => "new", :controller => "login") do %>
-	<div class ="input-append">
-		<%= text_field_tag 'invite_code',nil, :placeholder => "Invite code..." %>
-		<%= submit_tag "Submit", :class => 'btn' %>
-	</div>
-	<% end %>
+<div class="container">
+  <div class="row">
+    <div class="span12 well">
+    	<h1>Enter Invite Code:</h1>
+    	<%= form_tag(:action => "new", :controller => "login", :class => "form-inline") do %>
+    	<div class ="input-append">
+    		<%= text_field_tag 'invite_code',nil, :placeholder => "Invite code..." %>
+    		<%= submit_tag "Get Started!", :class => 'btn btn-success' %>
+    	</div>
+    	<% end %>
+    </div>
+  </div>
 </div>

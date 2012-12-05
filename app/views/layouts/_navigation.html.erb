@@ -1,8 +1,10 @@
-<%= link_to "Home", houses_path, :class => 'brand' %>
+<%= link_to "Hang Your Boots", '#', :class => 'brand' %>
 
 <ul class="nav">
-  <li><%= link_to "Hacker Houses", houses_path %></li>
-  <li><%= link_to "Potential Roommates", users_path %></li>
+  <% if current_user %>
+    <li><%= link_to "Hacker Houses", houses_path %></li>
+    <li><%= link_to "Potential Roommates", users_path %></li>
+  <% end %>
 </ul>
 
 <div class="pull-right">
