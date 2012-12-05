@@ -7,6 +7,7 @@ gem 'omniauth-facebook', '< 1.4.1'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'httparty'
+gem 'fog'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
