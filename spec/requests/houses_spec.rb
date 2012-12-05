@@ -22,12 +22,6 @@ describe "Houses" do
         page.should have_content(house.title)
       end
     end
-    
-    it "displays the cohort of each house" do
-      House.all.each do |house|
-        page.should have_content(house.cohort)
-      end
-    end
 
     it "displays the total cost of each house" do
       all('span.total-cost').each do |span|

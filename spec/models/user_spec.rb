@@ -49,6 +49,7 @@ describe User do
   context "associations" do
     it { should have_one(:house).through(:commitment) }
     it { should have_one(:commitment) }
+    it { should belong_to(:cohort) }
   end
 
 end

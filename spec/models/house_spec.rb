@@ -51,7 +51,7 @@ describe House do
   context "associations" do
     it { should have_many(:users).through(:commitments) }
     it { should have_many(:commitments) }
-    it { should belong_to(:invitation) }
+    it { should belong_to(:cohort) }
   end
 
 end
