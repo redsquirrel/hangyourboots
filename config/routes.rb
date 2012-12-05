@@ -8,6 +8,8 @@ Hangyourboots::Application.routes.draw do
 
   resources :invitations
 
+  get 'auth/facebook', :as => 'login'
+
   # TODO: Create a home page / sign-in page
   match 'join', to: 'login#new', :as => 'join', :via => 'post'
 
