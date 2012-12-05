@@ -11,6 +11,7 @@ FactoryGirl.define do
       user.oauth_expires_at = "1234",
       user.uid = "1234",
       user.provider = "facebook",
+      user.cohort = FactoryGirl.create(:cohort),
       user.save
       FactoryGirl.create(:facebook_profile, :user => user)
     end
