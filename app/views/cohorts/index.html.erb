@@ -1,0 +1,22 @@
+<div>
+<%= link_to "New cohort", new_cohort_path %>
+</div>
+
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cohorts.each do |i| %>
+  <tr>
+    <td><%= i.name %></td>
+    <td><%= link_to 'Show', cohort_path(i) %></td>
+    <td><%= link_to 'Edit', edit_cohort_path(i) %></td>
+    <td><%= link_to 'Destroy', i, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>

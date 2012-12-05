@@ -11,11 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202223454) do
+ActiveRecord::Schema.define(:version => 20121205023629) do
 
   create_table "assets", :force => true do |t|
     t.integer  "house_id",   :null => false
     t.string   "image"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "cohorts", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -51,6 +57,10 @@ ActiveRecord::Schema.define(:version => 20121202223454) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "bathrooms"
+    t.integer  "user_id"
+    t.integer  "cohort_id"
+    t.string   "distance"
+    t.string   "duration"
   end
 
   create_table "invitations", :force => true do |t|
@@ -58,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20121202223454) do
     t.datetime "expires_at"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "cohort_id"
   end
 
   add_index "invitations", ["code"], :name => "index_invitations_on_code", :unique => true
@@ -74,7 +85,7 @@ ActiveRecord::Schema.define(:version => 20121202223454) do
     t.string   "oauth_token"
     t.string   "oauth_expires_at"
     t.boolean  "admin",            :default => false
-    t.integer  "invitation_id"
+    t.integer  "cohort_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

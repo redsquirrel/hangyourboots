@@ -1,10 +1,18 @@
+require 'distance'
+
 class House < ActiveRecord::Base
+  before_create :calculate_distance_and_duration
+
   attr_accessible :title, :address, :description, :maps_link, :rooms,
-  								:beds, :bathrooms, :capacity, :total_cost, :assets_attributes
+  								:beds, :bathrooms, :capacity, :total_cost, :assets_attributes, :cohort,
+                  :distance, :duration
 
   validates :title, :address, :description, :maps_link,
   					:rooms, :beds, :bathrooms, :capacity, :total_cost,
             :presence => true
+
+  belongs_to :cohort
+  belongs_to :user
 
   has_many :commitments
   has_many :users, :through => :commitments
@@ -12,6 +20,10 @@ class House < ActiveRecord::Base
 
   accepts_nested_attributes_for :assets, :allow_destroy => true
   
+  def self.for_user_cohort(user)
+    find_all_by_cohort_id(user.cohort_id)
+  end
+
   def full?
     commitments.size == capacity
   end
@@ -24,4 +36,13 @@ class House < ActiveRecord::Base
     commitments.size
   end
 
+  private
+  def calculate_distance_and_duration
+    begin
+      self.distance = Distance.calculate(self.address)[:distance]
+      self.duration = Distance.calculate(self.address)[:duration]
+    rescue
+      "no data"
+    end
+  end
 end
