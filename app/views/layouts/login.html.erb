@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Hang Your Boots" %></title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <%= yield(:head) %>
+  </head>
+  <body class="<%= controller_name %> <%= action_name %>">
+    <header class="navbar navbar-fixed-top">
+      <nav class="navbar-inner">
+          <%= render 'layouts/navigation' %>
+      </nav>
+    </header>
+    <!-- carousel was here -->
+    <!-- <div id="main" role="main"> -->
+      <!-- <div class="container">
+        <div class="content">
+           <div class="row">
+            <div class="span12"> -->
+              <%= render 'layouts/messages' %>
+              <%= yield %>
+              <%= render 'homepage_info' %>
+            <!-- </div>
+          </div> -->
+          <!-- FOOTER -->
+          <footer>
+            <p class="pull-right"><a href="#">Back to top</a></p>
+            <p>&copy; 2012 Hang Your Boots.</p>
+          </footer>
+        <!-- </div> -->
+      <!-- </div> --> <!--! end of .container -->
+    <!-- </div> --> <!--! end of #main -->
+    <script>
+      !function ($) {
+        $(function(){
+          // carousel demo
+          $('#myCarousel').carousel()
+        })
+      }(window.jQuery)
+    </script>
+  </body>
+</html>
+
