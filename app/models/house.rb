@@ -1,13 +1,12 @@
 class House < ActiveRecord::Base
   attr_accessible :title, :address, :description, :maps_link, :rooms,
-  								:beds, :bathrooms, :capacity, :total_cost, :assets_attributes, :invitation
+  								:beds, :bathrooms, :capacity, :total_cost, :assets_attributes, :cohort
 
   validates :title, :address, :description, :maps_link,
   					:rooms, :beds, :bathrooms, :capacity, :total_cost,
             :presence => true
 
-  belongs_to :invitation
-  belongs_to :cohort, :class_name => :invitation
+  belongs_to :cohort
   has_many :commitments
   has_many :users, :through => :commitments
   has_many :assets
@@ -25,5 +24,4 @@ class House < ActiveRecord::Base
   def people_committed
     commitments.size
   end
-
 end

@@ -3,6 +3,7 @@ class Invitation < ActiveRecord::Base
 
 	has_many :users
 	has_many :houses
+	belongs_to :cohort
 
 	def self.valid_code?(code)
 		invite = find_by_code(code)
