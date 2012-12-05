@@ -22,9 +22,12 @@ describe "Users" do
       
       it 'displays the user pictures' do
       	visit users_path
-      	@users.each do |user|
-	      	page.should have_xpath("//img[@src ='http://lorempixel.com/50/50/']")
-	      end
+        all('img').each do |img|
+          img[:src].should_not be nil
+        end
+      	# @users.each do |user|
+	      # 	page.should have_xpath("//img[@src ='http://lorempixel.com/50/50/']")
+	      
       end
 
       it 'shows the house that a user is committed to' do
