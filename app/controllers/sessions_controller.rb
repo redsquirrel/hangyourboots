@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 	after_filter :reset_cookies!
 
   def create
-    if user = User.from_omniauth(env["omniauth.auth"],cookies[:invite_code])
+    if user = User.from_omniauth(env["omniauth.auth"], cookies[:invite_code])
     	session[:user_id] = user.id
     	redirect_to houses_path, notice: "Signed in!"
     else
@@ -19,6 +19,6 @@ class SessionsController < ApplicationController
 
   private
   def reset_cookies!
-  	cookies[:invite_code] = nil
+  	cookies.delete(:invite_code)
   end
 end

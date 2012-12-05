@@ -1,16 +1,14 @@
 class LoginController < ApplicationController
 	def show
-	end  
+	end
 
   def new
-  	# User wants to join
-  	code = params[:invite_code]
-  	if Invitation.valid_code?(code)
-  		cookies[:invite_code] = code
-  		redirect_to("/auth/facebook")
+  	if Invitation.valid_code?(params[:invite_code])
+  		cookies[:invite_code] = params[:invite_code]
+  		redirect_to login_path
   	else
   		flash[:alert] = "Invalid invitation code"
-  		render 'login/show'
+  		render :show
   	end
   end
 end
