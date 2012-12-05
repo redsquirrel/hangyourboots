@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :name, :email, :gender, :bio
 
+  has_many :houses
   has_one :facebook_profile
   belongs_to :invitation
   has_one :commitment, :dependent => :destroy
@@ -53,5 +54,5 @@ class User < ActiveRecord::Base
     end
   end
 
-  
+
 end
