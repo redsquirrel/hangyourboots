@@ -6,7 +6,16 @@
       <% if house.assets[0] != nil %>
         <%= image_tag house.assets[0].image_url.to_s,
               :class => 'img-polaroid' %>
-      <% end %>
+      <% end %><br />
+      <div class="center-me">
+        <span class="total-cost">
+          <%= number_to_currency((house.total_cost / house.capacity)) %> per person
+        </span>
+        &nbsp;&bull;&nbsp;
+        <%= house.distance %>
+        &nbsp;&bull;&nbsp;
+        <%= house.duration %>
+      </div>
     </div>
     <div class="span4 title">
       <div class="row">
@@ -27,19 +36,10 @@
       </div>
     </div>
     <div class="span4 details">
-      <span class="total-cost">
-        <%= number_to_currency(house.total_cost) %>
-      </span>
-
-      <span class="distance">
-        <%= house.distance %>
-        <%= house.duration %>
-      </span>
-
-      <br />
       <%= link_to 'Details',
                    house_path(house),
                    :class => 'btn btn-primary btn-large details' %>
+      </span>
     </div>
   </div>
 <% end %>
