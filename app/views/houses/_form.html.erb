@@ -4,8 +4,8 @@
     <%= f.label :cohort_id, "Cohort" %>
     <%= select(:house, :cohort_id, cohort_options) %>
   <% else %>
-    <% f.hidden_field :cohort_id => current_user.cohort.id %>
-  <% end %>
+    <%= f.hidden_field :cohort_id, :value => current_user.cohort_id %>
+  <%end%>
   </p>
   <p>
     <%= f.label :title %><br />
@@ -39,7 +39,7 @@
     <%= f.number_field :capacity %>
   </p>
   <p>
-    <%= f.label :total_cost, 'Total cost for 9 weeks' %><br />
+    <%= f.label :total_cost, 'Total monthly cost' %><br />
     <%= f.number_field :total_cost %>
   </p>
   <%= f.label 'Pictures' %>
