@@ -5,7 +5,7 @@ class House < ActiveRecord::Base
 
   attr_accessible :title, :address, :description, :maps_link, :rooms,
   								:beds, :bathrooms, :capacity, :total_cost, :assets_attributes, :cohort_id, :cohort,
-                  :distance, :duration
+                  :listing, :distance, :duration
 
   validates :title, :address, :description, :maps_link,
   					:rooms, :beds, :bathrooms, :capacity, :total_cost,

@@ -67,7 +67,9 @@ describe "Houses" do
 
   describe "Show page" do
     before do
-      @house = create(:house, :rooms => 3, :beds => 4, :bathrooms => 2, :capacity => 1, :cohort => @user.cohort)
+      @house = create(:house, :rooms => 3, :beds => 4,
+              :bathrooms => 2, :capacity => 1, :cohort => @user.cohort,
+              :listing => 'http://www.archstoneapartments.com/Apartments/California/Northern_California/Archstone_South_Market/')
       com = Commitment.new(:house_id => @house.id)
       com.user_id = @user.id
       com.save
@@ -76,6 +78,10 @@ describe "Houses" do
 
     it "displays the title of the house" do
       page.should have_content(@house.title)
+    end
+
+    it "displays the original listing of the house" do
+      page.should have_link("Original Listing", @house.listing)
     end
 
     it "displays the description of the house" do
@@ -133,6 +139,32 @@ describe "Houses" do
     context "if user is not an admin and did not create the house" do
       it "has no delete button" do
         page.should_not have_link("Delete House")
+      end
+    end
+
+    context "if user is admin" do
+      it "has an edit button" do
+        @user.admin = true
+        @user.save
+        visit house_path(@house)
+
+        page.should have_link("Edit House")
+      end
+    end
+
+    context "if user owns the house" do
+      it "has an edit button" do
+        @house.user_id = @user.id
+        @house.save
+        visit house_path(@house)
+
+        page.should have_link("Edit House")
+      end
+    end
+
+    context "if user is not an admin and did not create the house" do
+      it "has no edit button" do
+        page.should_not have_link("Edit House")
       end
     end
   end

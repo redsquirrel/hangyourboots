@@ -13,6 +13,7 @@ end
 
 puts 'Creating houses in the database...'
   house = House.create(:title => "Archstone 2-BR",
+               :listing => 'http://www.archstoneapartments.com/Apartments/California/Northern_California/Archstone_South_Market/',
                :address => "One Saint Francis Pl., San Francisco, CA 94107",
                :description => "Located on the corner of 3rd and Folsom streets, Archstone South Market is in a premier Downtown location.",
                :maps_link => "https://maps.google.com/maps?q=Archstone+South+Market,+St+Francis+Pl,+San+Francisco,+CA&hl=en&sll=37.7577,-122.4376&sspn=0.248904,0.198784&oq=one+st+francis+&hq=Archstone+South+Market,&hnear=St+Francis+Pl,+San+Francisco,+California+94107&t=m&z=16",
@@ -27,6 +28,7 @@ puts 'Creating houses in the database...'
   Asset.create(:house_id => house.id, :image => File.open(File.join(Rails.root, "/app/assets/images/archstone3.png")))
 
   house = House.create(:title => "Archstone 1-BR",
+               :listing => 'http://www.archstoneapartments.com/Apartments/California/Northern_California/Archstone_South_Market/',
                :address => "One Saint Francis Pl., San Francisco, CA 94107",
                :description => "Located on the corner of 3rd and Folsom streets, Archstone South Market is in a premier Downtown location.",
                :maps_link => "https://maps.google.com/maps?q=Archstone+South+Market,+St+Francis+Pl,+San+Francisco,+CA&hl=en&sll=37.7577,-122.4376&sspn=0.248904,0.198784&oq=one+st+francis+&hq=Archstone+South+Market,&hnear=St+Francis+Pl,+San+Francisco,+California+94107&t=m&z=16",
@@ -41,6 +43,7 @@ puts 'Creating houses in the database...'
   Asset.create(:house_id => house.id, :image => File.open(File.join(Rails.root, "/app/assets/images/archstone3.png")))
 
   house = House.create(:title => "Archstone 1-BR",
+               :listing => 'http://www.archstoneapartments.com/Apartments/California/Northern_California/Archstone_South_Market/',
                :address => "One Saint Francis Pl., San Francisco, CA 94107",
                :description => "Located on the corner of 3rd and Folsom streets, Archstone South Market is in a premier Downtown location.",
                :maps_link => "https://maps.google.com/maps?q=Archstone+South+Market,+St+Francis+Pl,+San+Francisco,+CA&hl=en&sll=37.7577,-122.4376&sspn=0.248904,0.198784&oq=one+st+francis+&hq=Archstone+South+Market,&hnear=St+Francis+Pl,+San+Francisco,+California+94107&t=m&z=16",

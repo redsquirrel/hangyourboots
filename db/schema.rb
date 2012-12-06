@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121205023629) do
+ActiveRecord::Schema.define(:version => 20121206014900) do
 
   create_table "assets", :force => true do |t|
     t.integer  "house_id",   :null => false
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20121205023629) do
     t.integer  "cohort_id"
     t.string   "distance"
     t.string   "duration"
+    t.string   "listing"
   end
 
   create_table "invitations", :force => true do |t|
