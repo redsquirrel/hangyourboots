@@ -135,5 +135,31 @@ describe "Houses" do
         page.should_not have_link("Delete House")
       end
     end
+
+    context "if user is admin" do
+      it "has an edit button" do
+        @user.admin = true
+        @user.save
+        visit house_path(@house)
+
+        page.should have_link("Edit House")
+      end
+    end
+
+    context "if user owns the house" do
+      it "has an edit button" do
+        @house.user_id = @user.id
+        @house.save
+        visit house_path(@house)
+
+        page.should have_link("Edit House")
+      end
+    end
+
+    context "if user is not an admin and did not create the house" do
+      it "has no edit button" do
+        page.should_not have_link("Edit House")
+      end
+    end
   end
 end
