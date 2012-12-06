@@ -23,7 +23,7 @@ body.houses.index .content { margin: 0 -10px;}
 	margin-top: 2.6em;
 }
 
-.total-cost { font-family: serif; font-size: 1.2em; font-weight: lighter; }
+.total-cost { font-family: serif; font-size: 1.6em; font-weight: lighter; }
 div.span4.details { text-align: center; margin-top: 60px; }
 
 .alt { background-color: #ccc; }
@@ -66,6 +66,8 @@ div.fb-comments.fb_iframe_widget {
 		width: 100%;
 		margin: 0 auto;
 	}
+
+.fb-tweak-align { margin-left: 0px !important; }
 
 .roommate-pics {
 	height: 145px;
