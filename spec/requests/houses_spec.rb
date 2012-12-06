@@ -67,7 +67,9 @@ describe "Houses" do
 
   describe "Show page" do
     before do
-      @house = create(:house, :rooms => 3, :beds => 4, :bathrooms => 2, :capacity => 1, :cohort => @user.cohort)
+      @house = create(:house, :rooms => 3, :beds => 4,
+              :bathrooms => 2, :capacity => 1, :cohort => @user.cohort,
+              :listing => 'http://www.archstoneapartments.com/Apartments/California/Northern_California/Archstone_South_Market/')
       com = Commitment.new(:house_id => @house.id)
       com.user_id = @user.id
       com.save
@@ -76,6 +78,10 @@ describe "Houses" do
 
     it "displays the title of the house" do
       page.should have_content(@house.title)
+    end
+
+    it "displays the original listing of the house" do
+      page.should have_link("Original Listing", @house.listing)
     end
 
     it "displays the description of the house" do
