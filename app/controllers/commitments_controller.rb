@@ -8,8 +8,8 @@ class CommitmentsController < ApplicationController
       current_user.build_commitment(:house_id => params[:id])
       if current_user.save
         flash[:notice] = "Successfully joined a house"
-        notify_users!
         respond_with(current_user.house)
+        notify_users!
       else
         flash[:alert] = "Unable to join house"
         render house_path(params[:id])
@@ -27,12 +27,6 @@ class CommitmentsController < ApplicationController
       redirect_to houses_path
     end
   end
-
-  def update
-    current_user.commitment.update_attributes(params[:commitment])
-    respond_with(current_user.house)
-  end
-
 
   private
   def notify_users!

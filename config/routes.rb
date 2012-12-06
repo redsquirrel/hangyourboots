@@ -3,7 +3,7 @@ Hangyourboots::Application.routes.draw do
   root :to => "login#show"
   resources :users
   resources :houses do
-    resources :commitments
+    resources :commitments, :only => [:create, :destroy]
   end
 
   resources :invitations
