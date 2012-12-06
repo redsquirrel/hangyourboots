@@ -1,7 +1,7 @@
 Hangyourboots::Application.routes.draw do
 
   root :to => "login#show"
-  match '/tos' => 'static_pages#tos'
+  match '/tos', :to => redirect('/tos.html')
 
   resources :users
   resources :houses do
