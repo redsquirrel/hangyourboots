@@ -26,7 +26,9 @@
     <p><%= @house.description %></p>
 
     <div class="pull-right price-and-button">
-      <span class="total-cost"><%= number_to_currency(@house.total_cost) %></span>
+      <span class="total-cost">
+        <%= number_to_currency((@house.total_cost / @house.capacity)) %>
+      </span>
 
       <br />
 
@@ -81,6 +83,33 @@
           <strong>bath: </strong><span class="pull-right"><%= @house.bathrooms %></span>
         </div>
       </div>
+      <div class="row">
+        <div class="span2">
+          <strong>$ per: </strong>
+          <span class="pull-right">
+            <%= number_to_currency((@house.total_cost / @house.capacity)) %>
+          </span>
+        </div>
+        <div class="span2">
+          &nbsp;
+        </div>
+        <div class="span2">
+          <strong>walk: </strong><span class="pull-right"><%= @house.duration %></span>
+        </div>
+      </div>
+      <div class="row alt">
+        <div class="span2">
+          <strong>$ tot: </strong>
+          <span class="pull-right">
+            <%= number_to_currency(@house.total_cost) %>
+          </span>
+        </div>
+        <div class="span2">
+          &nbsp;
+        </div>
+        <div class="span2">
+          <strong>distance: </strong><span class="pull-right"><%= @house.distance %></span>
+        </div>
     </div>
 
     <% if @roommates.first != nil %>
@@ -110,7 +139,7 @@
     </div>
 
     <div class="row">
-      <div class="span6">
+      <div class="span6 fb-tweak-align">
         <%= render 'facebook_comments' %>
       </div>
     </div>
