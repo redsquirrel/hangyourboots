@@ -4,7 +4,7 @@
     <%= f.label :cohort_id, "Cohort" %>
     <%= select(:house, :cohort_id, cohort_options) %>
   <% else %>
-    <% f.hidden_field :cohort_id => current_user.cohort.id %>
+    <% f.hidden_field :cohort_id => current_user.cohort_id %>
   <%end%>
   </p>
   <p>
