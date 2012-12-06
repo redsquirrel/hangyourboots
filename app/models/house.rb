@@ -32,6 +32,10 @@ class House < ActiveRecord::Base
     users
   end
 
+  def build_assets
+    (5-assets.length).times { assets.build }
+  end
+
   def people_committed
     commitments.size
   end

@@ -5,6 +5,10 @@
     <li><%= link_to "Hacker Houses", houses_path %></li>
     <li><%= link_to "Potential Roommates", users_path %></li>
   <% end %>
+  <% if current_user.try(:is_admin?) %>
+    <li><%= link_to "Cohorts", cohorts_path %></li>
+    <li><%= link_to "Invitations", invitations_path %></li>
+  <% end %>
 </ul>
 
 <div class="pull-right">
