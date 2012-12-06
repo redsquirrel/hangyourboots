@@ -1,7 +1,11 @@
 <%= form_for @house, :html => {:multipart => true} do |f| %>
   <p>
+  <% if current_user.try(:is_admin?) %>
     <%= f.label :cohort_id, "Cohort" %>
     <%= select(:house, :cohort_id, cohort_options) %>
+  <% else %>
+    <% f.hidden_field :cohort_id => current_user.cohort.id %>
+  <% end %>
   </p>
   <p>
     <%= f.label :title %><br />
@@ -17,10 +21,6 @@
   <p>
     <%= f.label :description %><br />
     <%= f.text_field :description %>
-  </p>
-  <p>
-    <%= f.label :maps_link %><br />
-    <%= f.text_field :maps_link %>
   </p>
   <p>
     <%= f.label :rooms %><br />

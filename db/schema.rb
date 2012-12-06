@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121206014900) do
+ActiveRecord::Schema.define(:version => 20121206184511) do
 
   create_table "assets", :force => true do |t|
     t.integer  "house_id",   :null => false
@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(:version => 20121206014900) do
     t.string   "title"
     t.string   "address",     :null => false
     t.text     "description"
-    t.string   "maps_link"
     t.integer  "rooms"
     t.integer  "beds"
     t.integer  "capacity"
