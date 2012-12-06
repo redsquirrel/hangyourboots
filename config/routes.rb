@@ -5,7 +5,7 @@ Hangyourboots::Application.routes.draw do
 
   resources :users
   resources :houses do
-    resources :commitments
+    resources :commitments, :only => [:create, :destroy]
   end
 
   resources :invitations

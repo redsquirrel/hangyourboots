@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20121206184511) do
     t.integer  "cohort_id"
     t.string   "distance"
     t.string   "duration"
+    t.string   "listing"
   end
 
   create_table "invitations", :force => true do |t|

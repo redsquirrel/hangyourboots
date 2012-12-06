@@ -23,6 +23,19 @@
 
   <div class="span6">
     <h2>About This House</h2>
+
+    <% @house.capacity.times do |count| %>
+      <% if count + 1 <= @house.users.length %>
+        <i class="icon-user"></i>
+      <% else %>
+        <i class="icon-user icon-white"></i>
+      <% end %>
+    <% end %>
+    
+    <% if @house.listing %>
+      <h5><%= link_to "Original Listing", @house.listing %></h5>
+    <% end %>
+    
     <p><%= @house.description %></p>
 
     <div class="pull-right price-and-button">
@@ -49,6 +62,9 @@
       <% end %>
 
       <% if current_user.admin? || @house.user_id == current_user.id %>
+        <%= link_to "Edit House",
+                            edit_house_path(@house),
+                            :class => "btn btn-danger btn-default details" %>
         <%= link_to "Delete House",
                             house_path(@house),
                             :method => :delete,

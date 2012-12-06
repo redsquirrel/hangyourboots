@@ -28,12 +28,6 @@ class CommitmentsController < ApplicationController
     end
   end
 
-  def update
-    current_user.commitment.update_attributes(params[:commitment])
-    respond_with(current_user.house)
-  end
-
-
   private
   def notify_users!
     if current_user.house.full?

@@ -34,8 +34,6 @@ describe "Users" do
         all('img').each do |img|
           img[:src].should_not be nil
         end
-      	# @users.each do |user|
-	      # 	page.should have_xpath("//img[@src ='http://lorempixel.com/50/50/']")
 	      
       end
 
