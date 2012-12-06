@@ -15,13 +15,17 @@ class HousesController < ApplicationController
   def create
     @house = House.new(params[:house])
     @house.user_id = current_user.id
-    @house.save
-    respond_with(@house)
+    if @house.save
+      respond_with(@house)
+    else
+      @house.build_assets
+      render 'new'
+    end
   end
 
 	def new
 		@house = House.new
-    5.times { @house.assets.build }
+    @house.build_assets
 	end
 
 	def edit
