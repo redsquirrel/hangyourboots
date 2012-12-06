@@ -3,11 +3,11 @@ require 'distance'
 class House < ActiveRecord::Base
   before_create :calculate_distance_and_duration
 
-  attr_accessible :title, :address, :description, :maps_link, :rooms,
+  attr_accessible :title, :address, :description, :rooms,
   								:beds, :bathrooms, :capacity, :total_cost, :assets_attributes, :cohort_id, :cohort,
                   :distance, :duration
 
-  validates :title, :address, :description, :maps_link,
+  validates :title, :address, :description,
   					:rooms, :beds, :bathrooms, :capacity, :total_cost,
             :presence => true
 
