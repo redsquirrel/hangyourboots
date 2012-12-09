@@ -3,14 +3,14 @@ Hang-your-boots
 
 Helping [Dev Bootcampers](http://www.devbootcamp.com) from out of town easily and quickly organize housing.
 
-**Coming soon...**
+Demo app is [live](http://hangyourboots.herokuapp.com). The demo invite code is igeekallweek. And yes, it requires Facebook authentication to login.
 
 ###Contributing members
 
 - Andrew Fowler
 - Amy Lai
 - Jonathan Pepin
-- Alan Cohen
+- [Alan Cohen](http://lumberj.github.com)
 - Jeremy Fowler
 
 ###License
