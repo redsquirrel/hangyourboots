@@ -3,7 +3,7 @@ Hang-your-boots
 
 Helping [Dev Bootcampers](http://www.devbootcamp.com) from out of town easily and quickly organize housing.
 
-Demo app is [live](http://hangyourboots.herokuapp.com). The demo invite code is igeekallweek. And yes, it requires Facebook authentication to login.
+Demo app is [live](http://hangyourboots.herokuapp.com). The demo invite code is igeekallweek. And yes, it requires Facebook authentication to login. Uploaded some [screenshots](https://www.dropbox.com/sh/a34tj1mtkyzlt7r/_QLcX-HeBu#/), so you can see what it's like behind the curtains.
 
 ###Contributing members
 
