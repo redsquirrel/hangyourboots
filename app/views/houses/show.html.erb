@@ -126,6 +126,7 @@
         <div class="span2">
           <strong>distance: </strong><span class="pull-right"><%= @house.distance %></span>
         </div>
+      </div>
     </div>
 
     <% if @roommates.first != nil %>
@@ -155,7 +156,7 @@
     </div>
 
     <div class="row">
-      <div class="span6 fb-tweak-align">
+      <div class="span6">
         <%= render 'facebook_comments' %>
       </div>
     </div>
