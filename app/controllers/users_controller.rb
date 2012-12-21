@@ -27,11 +27,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    if current_user.is_admin?
-      @users = User.all
-    else
-      @users = User.for_user_cohort(current_user)
-    end
+    @users = User.all
   end
 
   def show
