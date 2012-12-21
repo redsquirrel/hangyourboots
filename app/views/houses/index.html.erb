@@ -1,45 +1,47 @@
 <% require 'distance' %>
 <div class='houses'>
-<% @houses.each_with_index do |house, index| %>
-  <div class='row house <%= index % 2 != 0 ? "alt" : "" %>'>
-    <div class="span4">
-      <% if house.assets[0] != nil %>
-        <%= image_tag house.assets[0].image_url.to_s,
+  <% if @houses %>
+    <% @houses.each_with_index do |house, index| %>
+      <div class='row house <%= index % 2 != 0 ? "alt" : "" %>'>
+        <div class="span4">
+          <% if house.assets[0] != nil %>
+            <%= image_tag house.assets[0].image_url.to_s,
               :class => 'img-polaroid' %>
-      <% end %><br />
-      <div class="center-me">
-          <%= number_to_currency((house.total_cost / house.capacity)) %> per person
-        &nbsp;&bull;&nbsp;
-        <%= house.distance %>
-        &nbsp;&bull;&nbsp;
-        <%= house.duration %>
-      </div>
-    </div>
-    <div class="span4 title">
-      <div class="row">
-        <div class="span4">
-          <%= house.title %>
+            <% end %><br />
+            <div class="center-me">
+              <%= number_to_currency((house.total_cost / house.capacity)) %> per person
+              &nbsp;&bull;&nbsp;
+              <%= house.distance %>
+              &nbsp;&bull;&nbsp;
+              <%= house.duration %>
+            </div>
+          </div>
+          <div class="span4 title">
+            <div class="row">
+              <div class="span4">
+                <%= house.title %>
+              </div>
+            </div>
+            <div class="row commitments">
+              <div class="span4">
+                <% house.capacity.times do |count| %>
+                  <% if count + 1 <= house.users.length %>
+                    <i class="icon-user"></i>
+                  <% else %>
+                    <i class="icon-user icon-white"></i>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="span4 details">
+            <%= link_to 'Details',
+              house_path(house),
+              :class => 'btn btn-primary btn-large details' %>
+            </span>
+          </div>
         </div>
-      </div>
-      <div class="row commitments">
-        <div class="span4">
-          <% house.capacity.times do |count| %>
-            <% if count + 1 <= house.users.length %>
-              <i class="icon-user"></i>
-            <% else %>
-              <i class="icon-user icon-white"></i>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="span4 details">
-      <%= link_to 'Details',
-                   house_path(house),
-                   :class => 'btn btn-primary btn-large details' %>
-      </span>
-    </div>
-  </div>
-<% end %>
+      <% end %>
+    <%end%>
 </div>
 <%= link_to 'Add a house', new_house_path, :class => "btn btn-primary btn-success" %>
