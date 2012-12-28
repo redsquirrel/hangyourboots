@@ -16,9 +16,8 @@ describe "Houses" do
       visit houses_path
     end
 
-    context "houses with the same cohort as current user" do
       it "displays the title of each house" do
-        House.find_all_by_cohort_id(@user.cohort_id).each do |house|
+        House.all.each do |house|
           page.should have_content(house.title)
         end
       end
@@ -35,15 +34,6 @@ describe "Houses" do
         }
         page.should have_content(House.first.description)
       end
-    end
-
-    context "houses with different cohort as current user" do
-      it "does not display houses in other cohorts" do
-        badhouse = create(:house)
-        visit houses_path
-        page.should_not have_content(badhouse.title)
-      end
-    end
 
     it "displays the distance" do
       page.should have_content(House.first.distance)
