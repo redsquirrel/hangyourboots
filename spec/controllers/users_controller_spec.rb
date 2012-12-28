@@ -22,23 +22,6 @@ describe UsersController do
           post :create, user: attributes_for(:user)
         }.to change(User, :count).by(1)
       end
-
-      it 'should redirects to :show template' do
-        post :create, user: attributes_for(:user)
-        response.should redirect_to user_path(assigns[:user])
-      end
-    end
-
-    describe 'GET #edit' do
-      it 'assigns the requested user to @user' do
-        get :edit, id: @user
-        assigns(:user).should eq @user
-      end
-
-      it 'assigns the requested user to @user' do
-        get :edit, id: @user
-        response.should render_template :edit
-      end
     end
 
     describe 'PUT #update' do
@@ -56,18 +39,6 @@ describe UsersController do
         expect {
           delete :destroy, id: @user
         }.to change(User, :count).by(-1)
-      end
-    end
-
-    describe 'GET #show' do
-      it 'assigns the requested user to @user' do
-        user = create(:user)
-        get :show, id: user
-        assigns(:user).should eq user
-
-        expect{
-          post :create, user: attributes_for(:user)
-        }.to change(User, :count).by(1)
       end
     end
   end

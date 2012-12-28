@@ -9,8 +9,10 @@ class User < ActiveRecord::Base
   delegate :image, :url, :to => :facebook_profile
   delegate :roommates, :to => :house
 
-  validates_presence_of :name, :email, :gender
+  validates_presence_of :name, :email, :gender 
   validates_uniqueness_of :email, :case_sensitive => false
+
+  after_initialize :init
 
   def self.from_omniauth(auth,invite_code)
     where(auth.slice("provider", "uid")).first || create_from_omniauth(auth,invite_code)
@@ -52,6 +54,10 @@ class User < ActiveRecord::Base
     if Invitation.valid_code?(invite_code)
       user.cohort = Invitation.find_by_code(invite_code).cohort
     end
+  end
+
+  def init
+    self.gender ||= "unspecified"
   end
 
 

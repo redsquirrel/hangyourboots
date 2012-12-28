@@ -50,6 +50,40 @@ describe "Users" do
       	page.should_not have_content(@house.title)
       end
 
+      describe 'delete links' do
+        it 'displays a delete user button if user is current user' do
+          visit users_path
+          page.should have_link('Delete User', :href => user_path(@current_user))
+        end
+
+        it 'can delete self' do
+          visit users_path
+          expect { click_link('Delete User') }.to change(User, :count).by(-1)
+        end
+
+        it 'does not display a delete user button if user is not current user' do
+          visit users_path
+          page.should_not have_link('Delete User', :href => user_path(User.first))
+        end
+
+        context 'when current user is an admin' do
+          before do
+            @current_user.admin = true
+            @current_user.save
+            visit users_path
+          end
+
+          it 'displays a delete user button if current user is admin' do
+            page.should have_link('Delete User', :href => user_path(User.first))
+          end
+
+          it 'can delete another user' do
+            expect { first(:link, 'Delete User').click }.to change(User, :count).by(-1)
+          end
+        end
+
+      end
+
     end
 
   end
