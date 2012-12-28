@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     if current_user == @user
-      redirect_to signout_path
+      redirect_to signout_path, :alert => "Account deleted."
     else
       redirect_to users_path
     end
