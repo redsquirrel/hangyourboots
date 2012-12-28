@@ -18,11 +18,6 @@ describe House do
 	  house.should_not be_valid
 	end
 
-	it "is invalid without a maps_link" do
-	  house.maps_link = nil
-	  house.should_not be_valid
-	end
-
 	it "is invalid without a rooms number" do
 	  house.rooms = nil
 	  house.should_not be_valid

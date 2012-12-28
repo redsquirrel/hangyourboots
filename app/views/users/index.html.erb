@@ -1,37 +1,3 @@
 <% @users.each do |user| %>
-  <div class="row well">
-    <div class="span2">
-      <br />
-      <div class="roommate-pics">
-        <a href="http://facebook.com/<%=user.uid%>"
-           class="roommate-popover"
-           rel="popover"
-           data-placement="top"
-           data-content="<%= user.name%>"
-           data-original-title="Get To Know Me On Facebook">
-            <%= image_tag user.image,
-                          :width => "145",
-                          :height => "145",
-                          :class => "roommate-headshot" %>
-        </a>
-      </div>
-    </div>
-    <div class="span9 pull-right">
-      <h2><%= user.name %></h2>
-      <ul>
-        <% if user.house %>
-          <li>House: <%= link_to user.house.title, house_path(user.house.id) %></li>
-          <li>Capacity: <%= user.house.capacity %></li>
-          <li>Spots Left: <%= user.house.capacity - user.house.people_committed %></li>
-          <li>
-            <a href="http://facebook.com/<%=user.uid%>" alt="Friend Me On Facebook">
-              Facebook Profile
-            </a>
-          </li>
-        <% else %>
-          Not committed to a house
-        <% end %>
-      </ul>
-    </div>
-  </div>
+  <%= render 'show', :user => user %>
 <% end %>

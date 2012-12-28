@@ -7,7 +7,6 @@ FactoryGirl.define do
     end
     address     { Faker::Address.street_address }
     description { Faker::Lorem.paragraph }
-    maps_link 	{ Faker::Internet.url }
 		rooms 			{ rand(0..4) }
 		beds 				{ rand(1..6) }
 		bathrooms   { rand(1..4) }

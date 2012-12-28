@@ -23,7 +23,11 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to users_path
+    if current_user == @user
+      redirect_to signout_path
+    else
+      redirect_to users_path
+    end
   end
 
   def index
