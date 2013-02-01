@@ -1,6 +1,4 @@
 var Map = {
-  dbcAddress: "717 California St, San Francisco, CA 94108",
-
   init: function() {
     this.calcRoute();
   },
@@ -16,7 +14,7 @@ var Map = {
   },
 
   calcRoute: function() {
-    var start = this.dbcAddress,
+    var start = $('#dbc-address').html(),
         end = $('#address').html(),
         directionsDisplay = new google.maps.DirectionsRenderer(),
         directionsService = new google.maps.DirectionsService(),

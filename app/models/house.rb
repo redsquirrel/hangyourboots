@@ -39,8 +39,10 @@ class House < ActiveRecord::Base
   private
   def calculate_distance_and_duration
     begin
-      self.distance = Distance.calculate(self.address)[:distance]
-      self.duration = Distance.calculate(self.address)[:duration]
+      result = Distance.calculate(self.address)
+      self.distance     = result[:distance]
+      self.duration     = result[:duration]
+      self.dbc_location = result[:location]
     rescue
       "no data"
     end

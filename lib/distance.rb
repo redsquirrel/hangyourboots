@@ -9,13 +9,15 @@ module Distance
     closest_address = min_distance = result = nil
 
     DBC_LOCATIONS.each do |dbc_address|
-      dbc_address = prepare_address(dbc_address)
-      address = prepare_address(address)
+      encoded_dbc_address = prepare_address(dbc_address)
+      encoded_address = prepare_address(address)
 
-      result = HTTParty.get("http://maps.googleapis.com/maps/api/distancematrix/json?origins=#{address}&destinations=#{dbc_address}&mode=walking&units=imperial&sensor=false")
+      result = HTTParty.get("http://maps.googleapis.com/maps/api/distancematrix/json?origins=#{encoded_address}&destinations=#{encoded_dbc_address}&mode=walking&units=imperial&sensor=false")
+      distance = to_distance(result).delete(",").to_i
 
-      distance = to_distance(result).to_i
       min_distance ||= distance
+      closest_address ||= dbc_address
+
       if distance < min_distance
         min_distance = distance
         closest_address = dbc_address
@@ -24,7 +26,8 @@ module Distance
 
     return {
       :distance => to_distance(result),
-      :duration => to_duration(result)
+      :duration => to_duration(result),
+      :location => closest_address
     }
   end
 
